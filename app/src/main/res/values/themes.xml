@@ -2,8 +2,14 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.UrbanMove" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/app_color_primary</item>
     </style>
 
-    <style name="Theme.UrbanMove" parent="Base.Theme.UrbanMove" />
+    <!-- Splash Screen app -->
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/app_color_primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.UrbanMove</item>
+    </style>
+
 </resources>

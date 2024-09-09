@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".presentation.ui.otpverification.OtpVerification">
 
     <LinearLayout
@@ -21,6 +22,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:text="Verifica tu código"
+            android:textColor="@color/black"
             android:textSize="50sp"
             android:textStyle="bold"/>
         
@@ -30,7 +32,20 @@
             android:layout_marginRight="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Introduce el código que te enviamos mediante un SMS al +51935826627"/>
+
+        <TextView
+            android:id="@+id/textMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="center"
+            android:textColor="@color/app_color_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,6 +55,7 @@
             android:orientation="horizontal">
             
             <EditText
+                android:id="@+id/code1"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:gravity="center"
@@ -54,6 +70,7 @@
                 tools:ignore="LabelFor"/>
 
             <EditText
+                android:id="@+id/code2"
                 android:layout_marginLeft="10dp"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -69,6 +86,7 @@
                 tools:ignore="LabelFor"/>
 
             <EditText
+                android:id="@+id/code3"
                 android:layout_marginLeft="10dp"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -84,6 +102,7 @@
                 tools:ignore="LabelFor"/>
 
             <EditText
+                android:id="@+id/code4"
                 android:layout_marginLeft="10dp"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -99,6 +118,7 @@
                 tools:ignore="LabelFor"/>
 
             <EditText
+                android:id="@+id/code5"
                 android:layout_marginLeft="10dp"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -115,7 +135,34 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="No recibiste tu código?"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/resendOTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Reenviar código"
+                android:textColor="@color/app_color_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
         <Button
+            android:id="@+id/btnVerificar"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:text="Verificar"

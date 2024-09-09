@@ -69,26 +69,40 @@
                 android:layout_marginLeft="8dp"
                 android:text="+51" />
             <EditText
+                android:id="@+id/teléfono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="phone"
+                android:textColor="@color/black"
                 android:background="@color/white"
                 android:hint="Número de Teléfono"/>
         </LinearLayout>
 
-        <Button
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:text="Siguiente"
-            android:backgroundTint="@color/app_color_primary"
-            android:textColor="@color/white"
-            android:padding="18dp"
-            android:layout_marginTop="32sp"
-            android:textSize="20sp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <Button
+                android:id="@+id/btngetOTP"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="Siguiente"
+                android:backgroundTint="@color/app_color_primary"
+                android:textColor="@color/white"
+                android:padding="18dp"
+                android:layout_marginTop="32sp"
+                android:textSize="20sp" />
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
 
+        </FrameLayout>
 
     </LinearLayout>
 

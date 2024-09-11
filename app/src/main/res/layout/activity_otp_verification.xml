@@ -56,8 +56,8 @@
             
             <EditText
                 android:id="@+id/code1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
                 android:gravity="center"
                 android:background="@drawable/round_input"
                 android:imeOptions="actionNext"
@@ -71,9 +71,9 @@
 
             <EditText
                 android:id="@+id/code2"
-                android:layout_marginLeft="10dp"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
                 android:gravity="center"
                 android:background="@drawable/round_input"
                 android:imeOptions="actionNext"
@@ -87,9 +87,9 @@
 
             <EditText
                 android:id="@+id/code3"
-                android:layout_marginLeft="10dp"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
                 android:gravity="center"
                 android:background="@drawable/round_input"
                 android:imeOptions="actionNext"
@@ -103,9 +103,9 @@
 
             <EditText
                 android:id="@+id/code4"
-                android:layout_marginLeft="10dp"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
                 android:gravity="center"
                 android:background="@drawable/round_input"
                 android:imeOptions="actionNext"
@@ -119,9 +119,25 @@
 
             <EditText
                 android:id="@+id/code5"
-                android:layout_marginLeft="10dp"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+                android:gravity="center"
+                android:background="@drawable/round_input"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="LabelFor"/>
+
+            <EditText
+                android:id="@+id/code6"
+                android:layout_marginLeft="5dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
                 android:gravity="center"
                 android:background="@drawable/round_input"
                 android:imeOptions="actionNext"

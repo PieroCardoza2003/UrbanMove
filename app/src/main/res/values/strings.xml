@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Urban Move</string>
+    <string name="menu_button"></string>
+    <string name="profile_image_desc"></string>
+    <string name="zoom_button_desc"></string>
+    <string name="zoom_out_button"></string>
+    <string name="zoom_in_button"></string>
+    <string name="my_location_button"></string>
+    <string name="close_button_description"></string>
 </resources>

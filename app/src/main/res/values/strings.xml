@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Urban Move</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string name="icon_title_map">Mapa</string>
+    <string name="icon_title_settings">Configuración</string>
+    <string name="icon_title_help">Ayuda</string>
+    <string name="icon_title_logout">Cerrar Sesión</string>
+
 </resources>

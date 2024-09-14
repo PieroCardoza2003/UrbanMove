@@ -1,7 +1,9 @@
 package com.capstone.urbanmove
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : AppCompatActivity() {
@@ -9,5 +11,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContentView(R.layout.activity_main)
+    }
+    fun int_navoption(v: View?){
+        val i = Intent(this,NavOptions::class.java)
+        startActivity(i)
     }
 }

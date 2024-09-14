@@ -43,7 +43,8 @@
             android:textColor="#000000"
             android:padding="12dp"
             android:background="@drawable/custom_edittext"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/tvApellidosLabel"
@@ -63,7 +64,8 @@
             android:background="@drawable/custom_edittext"
             android:hint="Apellidos Completos"
             android:padding="12dp"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/tvFechaNacimientoLabel"
@@ -202,7 +204,8 @@
             android:backgroundTint="#FF0000"
             android:padding="12dp"
             android:layout_marginTop="34dp"/>
-
     </LinearLayout>
+
+
 
 </ScrollView>

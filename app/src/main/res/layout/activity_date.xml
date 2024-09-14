@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,205 +7,208 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.dateinformation.activity_date">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:background="#FFFFFF"
-        android:padding="20dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Crear cuenta"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginTop="40dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="#FFFFFF"
+            android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tvNombresLabel"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Nombres"
-            android:textColor="#FF0000"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"/>
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crear cuenta"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginTop="40dp"/>
 
-        <EditText
-            android:id="@+id/etNombres"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Nombres Completos"
-            android:textColor="#000000"
-            android:padding="12dp"
-            android:background="@drawable/custom_edittext"
-            android:layout_marginTop="4dp"
-            android:inputType="text"/>
-
-        <TextView
-            android:id="@+id/tvApellidosLabel"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Apellidos"
-            android:textColor="#FF0000"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <EditText
-            android:id="@+id/etApellidos"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/custom_edittext"
-            android:hint="Apellidos Completos"
-            android:padding="12dp"
-            android:textColor="#000000"
-            android:inputType="text"/>
-
-        <TextView
-            android:id="@+id/tvFechaNacimientoLabel"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Fecha de nacimiento"
-            android:textColor="#FF0000"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <EditText
-            android:id="@+id/etFechaNacimiento"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Fecha de nacimiento"
-            android:textColor="#000000"
-            android:padding="12dp"
-            android:background="@drawable/custom_edittext"
-            android:layout_marginTop="4dp"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <View
-            android:layout_width="280dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="1dp"
-            android:background="#D3D3D3" />
-
-        <TextView
-            android:id="@+id/tvCorreoElectronicoLabel"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Correo electrónico"
-            android:textColor="#FF0000"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <EditText
-            android:id="@+id/etCorreoElectronico"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Correo electrónico"
-            android:textColor="#000000"
-            android:padding="12dp"
-            android:background="@drawable/custom_edittext"
-            android:layout_marginTop="4dp"
-            android:inputType="textEmailAddress"/>
-
-        <TextView
-            android:id="@+id/tvContrasenaLabel"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Contraseña"
-            android:textColor="#FF0000"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <RelativeLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp">
+            <TextView
+                android:id="@+id/tvNombresLabel"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="Nombres"
+                android:textColor="#FF0000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"/>
 
             <EditText
-                android:id="@+id/etContrasena"
-                android:layout_width="match_parent"
+                android:id="@+id/etNombres"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Contraseña"
+                android:hint="Nombres Completos"
                 android:textColor="#000000"
                 android:padding="12dp"
                 android:background="@drawable/custom_edittext"
-                android:inputType="textPassword"/>
+                android:layout_marginTop="4dp"
+                android:inputType="text"/>
 
-            <ImageView
-                android:id="@+id/ivToggleContrasena"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="240dp"
-                android:contentDescription="Toggle visibility"
-                android:padding="1dp"
-                android:src="@drawable/ic_visibility_off" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tvConfirmarContrasenaLabel"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="Confirmar contraseña"
-            android:textColor="#FF0000"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <RelativeLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp">
+            <TextView
+                android:id="@+id/tvApellidosLabel"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="Apellidos"
+                android:textColor="#FF0000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
 
             <EditText
-                android:id="@+id/etConfirmarContrasena"
-                android:layout_width="match_parent"
+                android:id="@+id/etApellidos"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Confirmar Contraseña"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="Apellidos Completos"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/tvFechaNacimientoLabel"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="Fecha de nacimiento"
+                android:textColor="#FF0000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/etFechaNacimiento"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de nacimiento"
                 android:textColor="#000000"
                 android:padding="12dp"
                 android:background="@drawable/custom_edittext"
-                android:inputType="textPassword"/>
+                android:layout_marginTop="4dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="true" />
 
-            <ImageView
-                android:id="@+id/ivToggleConfirmarContrasena"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="240dp"
-                android:contentDescription="Toggle visibility"
-                android:padding="1dp"
-                android:src="@drawable/ic_visibility_off" />
-        </RelativeLayout>
+            <View
+                android:layout_width="280dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="1dp"
+                android:background="#D3D3D3" />
 
-        <Button
-            android:id="@+id/btnGuardar"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="Continuar"
-            android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#FF0000"
-            android:padding="12dp"
-            android:layout_marginTop="34dp"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvCorreoElectronicoLabel"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="Correo electrónico"
+                android:textColor="#FF0000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
 
+            <EditText
+                android:id="@+id/etCorreoElectronico"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:textColor="#000000"
+                android:padding="12dp"
+                android:background="@drawable/custom_edittext"
+                android:layout_marginTop="4dp"
+                android:inputType="textEmailAddress"/>
 
+            <TextView
+                android:id="@+id/tvContrasenaLabel"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="Contraseña"
+                android:textColor="#FF0000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
 
-</ScrollView>
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <EditText
+                    android:id="@+id/etContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    android:textColor="#000000"
+                    android:padding="12dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="textPassword"/>
+
+                <ImageView
+                    android:id="@+id/ivToggleContrasena"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="240dp"
+                    android:contentDescription="Toggle visibility"
+                    android:padding="1dp"
+                    android:src="@drawable/ic_visibility_off" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvConfirmarContrasenaLabel"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="Confirmar contraseña"
+                android:textColor="#FF0000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <EditText
+                    android:id="@+id/etConfirmarContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirmar Contraseña"
+                    android:textColor="#000000"
+                    android:padding="12dp"
+                    android:background="@drawable/custom_edittext"
+                    android:inputType="textPassword"/>
+
+                <ImageView
+                    android:id="@+id/ivToggleConfirmarContrasena"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="240dp"
+                    android:contentDescription="Toggle visibility"
+                    android:padding="1dp"
+                    android:src="@drawable/ic_visibility_off" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="Continuar"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF0000"
+                android:padding="12dp"
+                android:layout_marginTop="34dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

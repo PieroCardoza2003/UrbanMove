@@ -48,22 +48,31 @@
             android:background="@drawable/rounded_corner"
             android:padding="15dp"
             android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
             />
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="350dp"
-            android:layout_height="55dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/rounded_corner"
-            android:padding="15dp"
-            android:hint="Contraseña"
-            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/app_color_primary"
+            style="@style/nofloatinglabel"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="350dp"
+                android:layout_height="55dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:ems="15"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-
-        <FrameLayout
+         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

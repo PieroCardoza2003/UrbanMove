@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.recovery.AccountRevocery"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.dateaccount.DateUser"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.emaillogin.Login"
             android:exported="false" />
         <activity

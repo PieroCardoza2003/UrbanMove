@@ -17,9 +17,11 @@ class OtpVerification : AppCompatActivity() {
         binding = ActivityOtpVerificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.textMobile.text = String.format(
-            "+51-%s", intent.getStringExtra("teléfono")
-        )
+        val email1 = intent.getStringExtra("EMAIL_KEY")
+        binding.showmail.text=email1
+
+        val msg1 = intent.getStringExtra("MSG")
+        binding.messageverify.text=msg1
 
         verificarOTP()
     }

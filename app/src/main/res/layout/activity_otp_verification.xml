@@ -25,24 +25,25 @@
             android:textColor="@color/black"
             android:textSize="50sp"
             android:textStyle="bold"/>
-        
+
         <TextView
+            android:id="@+id/messageverify"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="Introduce el código que te enviamos mediante un SMS al +51935826627"/>
+            android:textSize="19sp" />
 
         <TextView
-            android:id="@+id/textMobile"
+            android:id="@+id/showmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="50dp"
-            android:gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:gravity="left"
             android:textColor="@color/app_color_primary"
             android:textSize="14sp"
             android:textStyle="bold"/>
@@ -178,7 +179,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnVerificar"
+            android:id="@+id/btnverifycode"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:text="Verificar"

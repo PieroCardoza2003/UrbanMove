@@ -210,15 +210,6 @@
             android:padding="12dp"
             android:layout_marginTop="34dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Crear cuenta"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginTop="320dp"/>
-
     </LinearLayout>
 
 </ScrollView>

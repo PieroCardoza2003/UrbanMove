@@ -7,16 +7,11 @@ import com.google.firebase.auth.FirebaseAuth
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityPhoneLoginBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var verificationId: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPhoneLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Inicializar FirebaseAuth
-        auth = FirebaseAuth.getInstance()
-
-        //Country Code Picker
     }
 }

@@ -14,24 +14,21 @@ import java.util.*
 
 class activity_date : AppCompatActivity() {
 
-    private var isPasswordVisible = false
-    private var isConfirmPasswordVisible = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_date)
 
-        val etFechaNacimiento = findViewById<EditText>(R.id.etFechaNacimiento)
-
-        etFechaNacimiento.setOnClickListener {
-            showDatePickerDialog(etFechaNacimiento)
-        }
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val etFechaNacimiento = findViewById<EditText>(R.id.etFechaNacimiento)
+
+        etFechaNacimiento.setOnClickListener {
+            showDatePickerDialog(etFechaNacimiento)
         }
 
         val etContrasena = findViewById<EditText>(R.id.etContrasena)

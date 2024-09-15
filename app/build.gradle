@@ -50,17 +50,18 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.1"
-    // Country Code Picker
-    implementation 'com.hbb20:ccp:2.7.3'
     //googleService
     implementation platform('com.google.firebase:firebase-bom:33.2.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
     // --------------------------------------------------------------------
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.activity:activity:1.8.0'
+    implementation 'com.google.firebase:firebase-auth:23.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'

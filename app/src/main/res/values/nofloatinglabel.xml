@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="nofloatinglabel" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- Desactiva el hint flotante -->
+        <item name="hintEnabled">false</item>
+    </style>
+</resources>

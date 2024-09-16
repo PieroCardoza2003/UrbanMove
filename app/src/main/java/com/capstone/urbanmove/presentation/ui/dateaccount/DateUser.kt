@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urbanmove.databinding.ActivityDateUserBinding
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.widget.EditText
 import android.widget.Toast
 import java.util.Calendar
 import androidx.activity.viewModels
+import com.capstone.urbanmove.NavOptions
 import com.capstone.urbanmove.domain.entity.UserBody
 
 class DateUser : AppCompatActivity() {
@@ -27,6 +29,11 @@ class DateUser : AppCompatActivity() {
 
         viewModel.result.observe(this){ result ->
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
+            if(result=="Registro exitoso"){
+                val i = Intent(this, NavOptions::class.java)
+                startActivity(i)
+                finish()
+            }
         }
 
         binding.btnsavedata.setOnClickListener {

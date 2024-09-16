@@ -4,6 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_color_primary">#EC162A</color>
     <color name="app_color_gray">#F3F3F3</color>
-
-
+    <color name="underLine">#BDB8B8</color>
 </resources>

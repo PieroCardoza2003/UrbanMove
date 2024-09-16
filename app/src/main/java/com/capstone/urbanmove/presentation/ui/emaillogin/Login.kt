@@ -63,6 +63,7 @@ class Login : AppCompatActivity() {
         binding.register.setOnClickListener{
             val intent = Intent(this, DateUser::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

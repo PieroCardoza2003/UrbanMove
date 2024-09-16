@@ -14,4 +14,7 @@
         <item name="postSplashScreenTheme">@style/Base.Theme.UrbanMove</item>
     </style>
 
+    <style name="CustomTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>

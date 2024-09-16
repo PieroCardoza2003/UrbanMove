@@ -37,7 +37,7 @@ class RegisterViewModel: ViewModel() {
                     result.postValue("Registro exitoso")
                     return@launch
                 }
-                result.postValue("El usuario ya esta registrado")
+                result.postValue("No se ha podido registrar")
 
             } catch (ex: IOException){
                 Log.d("prints", "error: ${ex.message}")

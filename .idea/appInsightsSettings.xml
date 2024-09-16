@@ -8,10 +8,17 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
+<<<<<<< HEAD
                   <option name="appId" value="PLACEHOLDER" />
                   <option name="mobileSdkAppId" value="" />
                   <option name="projectId" value="" />
                   <option name="projectNumber" value="" />
+=======
+                  <option name="appId" value="com.capstone.urbanmove" />
+                  <option name="mobileSdkAppId" value="1:981903486501:android:cd0520a24681ec3b4459cc" />
+                  <option name="projectId" value="urbanmove-3bfe6" />
+                  <option name="projectNumber" value="981903486501" />
+>>>>>>> pedro
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

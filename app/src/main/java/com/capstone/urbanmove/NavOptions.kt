@@ -1,5 +1,6 @@
 package com.capstone.urbanmove
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -10,6 +11,8 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.capstone.urbanmove.databinding.ActivityNavOptionsBinding
+import com.capstone.urbanmove.presentation.ui.map.MapView
+
 class NavOptions : AppCompatActivity() {
     private lateinit var binding: ActivityNavOptionsBinding
     lateinit var toggle: ActionBarDrawerToggle
@@ -47,7 +50,11 @@ class NavOptions : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             it.isChecked = true
             when(it.itemId){
-                R.id.nav_map ->replaceFragment(MapFragment(),it.title.toString())
+                R.id.nav_map ->{
+                    val i = Intent(this@NavOptions, MapView::class.java)
+                    startActivity(i)
+                    //replaceFragment(MapFragment(),it.title.toString())
+                }
                 R.id.nav_settings ->replaceFragment(SettingsFragment(),it.title.toString())
                 R.id.nav_help ->replaceFragment(HelpFragment(),it.title.toString())
                 R.id.nav_logout ->Toast.makeText(applicationContext,"Clicked Logout",Toast.LENGTH_SHORT).show()

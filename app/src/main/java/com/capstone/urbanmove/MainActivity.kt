@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.capstone.urbanmove.databinding.ActivityMainBinding
-import com.capstone.urbanmove.presentation.ui.dateinformation.activity_date
 import com.capstone.urbanmove.presentation.ui.dateaccount.DateUser
 import com.capstone.urbanmove.presentation.ui.emaillogin.Login
 import com.capstone.urbanmove.presentation.ui.otpverification.OtpVerification
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intent = Intent(this, activity_date::class.java)
+        val intent = Intent(this, Login::class.java)
         startActivity(intent)
         finish()
 

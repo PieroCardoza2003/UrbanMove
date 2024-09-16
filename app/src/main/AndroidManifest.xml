@@ -14,11 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.UrbanMove"
-<<<<<<< HEAD
-        tools:targetApi="31">
-        <activity
-            android:name=".presentation.ui.dateinformation.activity_date"
-=======
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
@@ -32,7 +27,6 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.otpverification.OtpVerification"
->>>>>>> pedro
             android:exported="false" />
         <activity
             android:name=".MainActivity"

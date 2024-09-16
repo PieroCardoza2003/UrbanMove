@@ -37,14 +37,14 @@
             android:id="@+id/etname"
             android:layout_width="350dp"
             android:layout_height="55dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_corner"
+            android:hint="Nombres"
+            android:inputType="text"
             android:padding="15dp"
-            android:hint="Nombre Completo"
+            android:textColor="@color/black"
             android:textColorHint="#808080"
-            android:inputType="text" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="320dp"
@@ -60,14 +60,14 @@
             android:id="@+id/etsurname"
             android:layout_width="350dp"
             android:layout_height="55dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_corner"
+            android:hint="Apellidos (Opcional)"
+            android:inputType="text"
             android:padding="15dp"
-            android:hint="Apellidos Completos"
+            android:textColor="@color/black"
             android:textColorHint="#808080"
-            android:inputType="text" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="320dp"
@@ -79,37 +79,37 @@
             android:textColor="@color/app_color_primary"
             android:gravity="left"/>
 
-        <EditText
-            android:id="@+id/etFechaNacimiento"
-            android:layout_width="350dp"
-            android:layout_height="55dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/rounded_corner"
-            android:padding="12dp"
-            android:hint="Fecha de nacimiento"
-            android:textColorHint="#808080"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <View
-            android:layout_width="280dp"
-            android:layout_height="3dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="1dp"
-            android:background="#D3D3D3" />
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/icon_calendar"
+            style="@style/nofloatinglabel">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFechaNacimiento"
+                android:layout_width="350dp"
+                android:layout_height="55dp"
+                android:focusable="false"
+                android:background="@drawable/rounded_corner"
+                android:hint="Fecha de nacimiento (Opcional)"
+                android:clickable="true"
+                android:padding="15dp"
+                android:textColorHint="#808080"
+                android:inputType="none"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:text="Correo Electrónico"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="Correo electrónico"
             android:textColor="@color/app_color_primary"
-            android:gravity="left"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etmail"
@@ -122,7 +122,7 @@
             android:padding="15dp"
             android:textColor="@color/black"
             android:textColorHint="#808080"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="320dp"
@@ -151,7 +151,7 @@
                 android:textColorHint="#808080"
                 android:inputType="textPassword"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:ems="15"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -159,12 +159,12 @@
         <TextView
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:text="Confirmar Contraseña"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="Confirmar contraseña"
             android:textColor="@color/app_color_primary"
-            android:gravity="left"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
@@ -174,18 +174,18 @@
             app:passwordToggleTint="@color/app_color_primary"
             style="@style/nofloatinglabel"
             >
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etconfirmpassword"
                 android:layout_width="350dp"
                 android:layout_height="55dp"
                 android:background="@drawable/rounded_corner"
-                android:hint="Contraseña"
-                android:textColorHint="#808080"
+                android:ems="15"
+                android:hint="Confirmar contraseña"
                 android:inputType="textPassword"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:ems="15"
-                />
+                android:textColorHint="#808080"
+                android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

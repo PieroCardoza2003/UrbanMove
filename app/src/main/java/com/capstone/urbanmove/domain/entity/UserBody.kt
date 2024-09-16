@@ -12,5 +12,5 @@ data class UserBody(
     @SerializedName("email_usuario")
     val correo: String,
     @SerializedName("password_usuario")
-    val contraseña: String,
+    val contrasena: String
 )

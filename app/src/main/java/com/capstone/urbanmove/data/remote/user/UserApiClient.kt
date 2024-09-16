@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface UserApiClient {
 
-    @POST("/user/create")
-    suspend fun createUser(@Body request: UserBody): Response<UserResponse>
+    @POST("/api/user/create")
+    suspend fun createUser(@Body request: UserBody): Response<*>
 
 }

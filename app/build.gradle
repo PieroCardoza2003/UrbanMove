@@ -50,6 +50,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.1"
+    // Activity
+    implementation "androidx.activity:activity-ktx:1.9.0"
     //googleService
     implementation platform('com.google.firebase:firebase-bom:33.2.0')
     implementation 'com.google.firebase:firebase-auth-ktx'

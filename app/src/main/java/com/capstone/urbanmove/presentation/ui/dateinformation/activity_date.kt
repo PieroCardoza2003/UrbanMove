@@ -10,47 +10,39 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.urbanmove.R
+import com.capstone.urbanmove.databinding.ActivityDateBinding
 import java.util.*
 
 class activity_date : AppCompatActivity() {
 
+    private lateinit var binding: ActivityDateBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_date)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        binding = ActivityDateBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val etFechaNacimiento = findViewById<EditText>(R.id.etFechaNacimiento)
-
-        etFechaNacimiento.setOnClickListener {
-            showDatePickerDialog(etFechaNacimiento)
+        binding.etFechaNacimiento.setOnClickListener {
+            showDatePickerDialog(binding.etFechaNacimiento)
         }
 
-        val etContrasena = findViewById<EditText>(R.id.etContrasena)
-        val ivToggleContrasena = findViewById<ImageView>(R.id.ivToggleContrasena)
-        val etConfirmarContrasena = findViewById<EditText>(R.id.etConfirmarContrasena)
-        val ivToggleConfirmarContrasena = findViewById<ImageView>(R.id.ivToggleConfirmarContrasena)
-
-        ivToggleContrasena.setOnClickListener {
-            togglePasswordVisibility(etContrasena, ivToggleContrasena)
+        binding.ivToggleContrasena.setOnClickListener {
+            togglePasswordVisibility(binding.etContrasena, binding.ivToggleContrasena)
         }
 
-        ivToggleConfirmarContrasena.setOnClickListener {
-            togglePasswordVisibility(etConfirmarContrasena, ivToggleConfirmarContrasena)
+        binding.ivToggleConfirmarContrasena.setOnClickListener {
+            togglePasswordVisibility(binding.etConfirmarContrasena, binding.ivToggleConfirmarContrasena)
         }
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
     }
+
     private fun showDatePickerDialog(editText: EditText) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)

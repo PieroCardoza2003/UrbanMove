@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_text_checked">#FF000000</color> <!-- Color seleccionado -->
+    <color name="color_text_unchecked">#a9a9a9</color> <!-- Color no seleccionado -->
+</resources>

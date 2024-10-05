@@ -6,8 +6,7 @@
     android:orientation="vertical"
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:background="@color/white">
+    android:layout_marginEnd="16dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_marginTop="30dp"
@@ -23,7 +22,6 @@
         android:paddingTop="8dp"
         android:textSize="20sp"
         android:text="Juan Carlos"
-        android:textColor="@color/black"
         android:textStyle="bold"/>
 
     <TextView
@@ -31,8 +29,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/user_lastname"
         android:textSize="20sp"
-        android:text="Ramirez Cruz"
-        android:textColor="@color/black"/>
+        android:text="Ramirez Cruz" />
 
     <View
         android:layout_width="match_parent"

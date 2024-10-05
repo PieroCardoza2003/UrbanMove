@@ -1,16 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MapFragment">
 
-   
-    <TextView
+    <!-- Mapa -->
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="Map Fragment" />
+        android:layout_height="450dp"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/locationDisabledLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="#FFF3CD"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/locationMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No te encontramos en el mapa. Haz click en el botón para activar la ubicación"
+            android:textColor="#856404"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnEnableLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activar ubicación"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FFA000"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <!-- Otros contenidos debajo del mapa -->
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Información adicional debajo del mapa"
+        android:textSize="16sp"
+        android:padding="16dp" />
+
+    <!-- Puedes agregar más elementos como botones, imágenes, etc. -->
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buscar transporte"
+        android:background="@drawable/nav_buttonconductor"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:layout_gravity="center"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"/>
+
+</LinearLayout>

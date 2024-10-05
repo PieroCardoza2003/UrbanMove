@@ -36,8 +36,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
-        android:background="@color/white"
-        app:itemTextColor="@color/black"
         app:itemIconTint="@color/app_color_primary">
 
         <androidx.appcompat.widget.Toolbar
@@ -66,11 +64,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="@color/white"
-                app:itemTextColor="@color/black"
                 app:itemTextAppearance="@style/CustomTextAppearance"
                 app:itemIconTint="@color/app_color_primary"
-                app:menu="@menu/nav_menu"/>
+                app:menu="@menu/nav_menu"
+                app:itemBackground="@drawable/nav_item_background"
+                app:itemTextColor="@drawable/nav_item_text"/>
 
             <!-- Button placed just below the menu items -->
             <Button

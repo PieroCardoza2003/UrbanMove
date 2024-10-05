@@ -28,9 +28,8 @@ class AccountRevocery : AppCompatActivity() {
 
         }
 
-        binding.cancelreco.setOnClickListener {
-            val intent = Intent(this,Login::class.java)
-            startActivity(intent)
+        binding.buttomClose.setOnClickListener {
+            finish()
         }
 
     }

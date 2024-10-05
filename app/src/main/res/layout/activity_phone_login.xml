@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="70dp"
             android:src="@drawable/icon_app_red"
             />
 
@@ -38,33 +38,45 @@
             android:textSize="20sp"
             android:gravity="center"/>
 
-        <EditText
-            android:id="@+id/email"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="350dp"
-            android:layout_height="55dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/rounded_corner"
-            android:padding="15dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Correo electrónico"
-            android:textColorHint="#808080"
-            android:inputType="textEmailAddress"
-            />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:textColor="@color/black"
+                android:inputType="textEmailAddress"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/app_color_primary"
-            style="@style/nofloatinglabel"
-            >
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeWidth="2dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
-                android:layout_width="350dp"
-                android:layout_height="55dp"
-                android:background="@drawable/rounded_corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Contraseña"
                 android:textColorHint="#808080"
                 android:inputType="textPassword"
@@ -104,6 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¿Olvidó su contraseña?"
+            android:background="@color/white"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -156,6 +169,7 @@
                 android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:text=" Regístrate"
                 android:textColor="@color/app_color_primary"
                 android:textSize="16sp"

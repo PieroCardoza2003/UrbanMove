@@ -17,34 +17,16 @@ class OtpVerification : AppCompatActivity() {
         binding = ActivityOtpVerificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val email1 = intent.getStringExtra("EMAIL_KEY")
-        binding.showmail.text=email1
+        binding.showmail.text = "emailtest@gmail.com"
 
-        val msg1 = intent.getStringExtra("MSG")
-        binding.messageverify.text=msg1
+        binding.buttomClose.setOnClickListener {
+            finish()
+        }
 
         verificarOTP()
     }
 
-    private fun verificarOTP(){
+    private fun verificarOTP() {
 
-        val otp = listOf(binding.code1,binding.code2,binding.code3,binding.code4,binding.code5)
-        for (i in otp.indices) {
-            otp[i].addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (s.toString().trim().isNotEmpty() && i < otp.size-1){
-                        otp[i + 1].requestFocus()
-                    }
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-
-                }
-            })
-        }
     }
 }

@@ -27,6 +27,10 @@ class DateUser : AppCompatActivity() {
             showDatePickerDialog(binding.etFechaNacimiento)
         }
 
+        binding.buttomClose.setOnClickListener {
+            finish()
+        }
+
         viewModel.result.observe(this){ result ->
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
             if(result=="Registro exitoso"){
@@ -36,6 +40,7 @@ class DateUser : AppCompatActivity() {
             }
         }
 
+        /*
         binding.btnsavedata.setOnClickListener {
             val user = UserBody(
                 nombres = binding.etname.text.toString(),
@@ -48,6 +53,7 @@ class DateUser : AppCompatActivity() {
 
             viewModel.createUser(user, pass)
         }
+         */
     }
     private fun showDatePickerDialog(editText: EditText) {
         val calendar = Calendar.getInstance()

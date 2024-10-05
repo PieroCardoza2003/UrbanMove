@@ -1,7 +1,6 @@
 package com.capstone.urbanmove.presentation.ui.emaillogin
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,7 +16,6 @@ import com.capstone.urbanmove.presentation.ui.dateaccount.DateUser
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -26,7 +24,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import java.util.concurrent.Executors
+import java.io.IOException
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityPhoneLoginBinding
@@ -38,8 +36,10 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPhoneLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         auth = Firebase.auth
         oneTapClient = Identity.getSignInClient(this)
+
         signInRequest = BeginSignInRequest.builder()
             .setGoogleIdTokenRequestOptions(
                 BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
@@ -67,13 +67,6 @@ class Login : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if(currentUser != null) run {
-            showuser()
-        }
-    }
 
     private suspend fun signingGoogle() {
         val result = oneTapClient?.beginSignIn(signInRequest)?.await()
@@ -95,26 +88,14 @@ class Login : AppCompatActivity() {
                         auth.signInWithCredential(firebaseCredential).addOnCompleteListener {
                             if (it.isSuccessful) {
                                 binding.progressBar.visibility = View.INVISIBLE
+                                // enviar el id token al backend
                                 Toast.makeText(this, "Sign In Complete", Toast.LENGTH_LONG).show()
-                                showuser()
                             }
                         }
                     }
-                } catch (e: ApiException) {
-                    e.printStackTrace()
+                } catch (e: IOException) {
+                    Log.d("prints", "Erro auth")
                 }
             }
         }
-
-    private fun showuser(){
-        val user = Firebase.auth.currentUser
-        Log.d("prints", "$user.")
-        user?.let {
-            val name = it.displayName
-            val email = it.email
-            val photoUrl = it.photoUrl
-            val emailVerified = it.isEmailVerified
-        }
-    }
-
 }

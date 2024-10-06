@@ -2,16 +2,16 @@ package com.capstone.urbanmove.presentation.ui.login_user
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.ActivityLoginBinding
-import com.capstone.urbanmove.presentation.ui.recovery.AccountRevocery
+import com.capstone.urbanmove.domain.entity.Result
+import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordActivity
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterActivity
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
@@ -27,7 +27,10 @@ import kotlinx.coroutines.tasks.await
 import java.io.IOException
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
+    private val viewModel: LoginViewModel by viewModels()
+
     private lateinit var auth: FirebaseAuth
     private var oneTapClient: SignInClient? = null
     private lateinit var signInRequest: BeginSignInRequest
@@ -55,14 +58,41 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        binding.buttonLogin.setOnClickListener {
+            val email = binding.edittextEmail.text.toString()
+            val password = binding.edittextPassword.text.toString()
+
+            if(email.isBlank()){
+                binding.edittextEmailLayout.errorIconDrawable = null
+                binding.edittextEmailLayout.error = "Este campo no puede estar vacío"
+            }
+            if (password.isBlank()){
+                binding.edittextPasswordLayout.errorIconDrawable = null
+                binding.edittextPasswordLayout.error = "Este campo no puede estar vacío"
+            }
+            viewModel.loginUser(email, password)
+        }
+
         binding.forgotpassword.setOnClickListener {
-            val intent = Intent(this, AccountRevocery::class.java)
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
 
         binding.register.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+        }
+
+        viewModel.result.observe(this){ result ->
+            when(result) {
+                Result.SUCCESS ->{}
+                Result.UNSUCCESS -> {
+                    Toast.makeText(this, "Las credenciales no son validas", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    Toast.makeText(this, "Internal Error", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -86,14 +116,12 @@ class LoginActivity : AppCompatActivity() {
                         val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
                         auth.signInWithCredential(firebaseCredential).addOnCompleteListener {
                             if (it.isSuccessful) {
-                                binding.progressBar.visibility = View.INVISIBLE
-                                // enviar el id token al backend
-                                Toast.makeText(this, "Sign In Complete", Toast.LENGTH_LONG).show()
+                                viewModel.loginWithGoogle(idToken)
                             }
                         }
                     }
                 } catch (e: IOException) {
-                    Log.d("prints", "Erro auth")
+                    Toast.makeText(this, "Ocurrió un error durante la autenticación", Toast.LENGTH_LONG).show()
                 }
             }
         }

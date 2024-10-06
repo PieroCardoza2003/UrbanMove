@@ -4,17 +4,17 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.capstone.urbanmove.domain.entity.UserBody
-import com.capstone.urbanmove.domain.usecase.CreateUser
+import com.capstone.urbanmove.data.remote.models.RegisterUserRequest
+import com.capstone.urbanmove.domain.usecase.RegisterUserUseCase
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class RegisterViewModel: ViewModel() {
 
     val result = MutableLiveData<String>()
-    val userUseCase = CreateUser()
+    val userUseCase = RegisterUserUseCase()
 
-    fun createUser(user: UserBody, pass: String){
+    fun createUser(user: RegisterUserRequest, pass: String){
         viewModelScope.launch {
 
             if (user.nombres.isBlank() ||

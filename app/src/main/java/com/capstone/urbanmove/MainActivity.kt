@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
 
-        val intent=Intent(this,LoginActivity::class.java)
+        val intent = Intent(this,LoginActivity::class.java)
         startActivity(intent)
         finish()
     }

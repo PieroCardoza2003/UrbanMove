@@ -22,6 +22,8 @@ class NewPasswordFragment : Fragment() {
     ): View {
         _binding = FragmentNewPasswordBinding.inflate(inflater, container, false)
 
+        binding.buttomClose.setOnClickListener { requireActivity().finish() }
+
         return binding.root
     }
 

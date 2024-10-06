@@ -21,6 +21,8 @@ class VerifyCodeFragment : Fragment() {
     ): View {
         _binding = FragmentVerifyCodeBinding.inflate(inflater, container, false)
 
+        binding.buttomClose.setOnClickListener { requireActivity().finish() }
+
         return binding.root
     }
 

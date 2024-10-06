@@ -1,4 +1,4 @@
-package com.capstone.urbanmove
+package com.capstone.urbanmove.presentation.ui.home_user
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.ActivityNavOptionsBinding
 import com.capstone.urbanmove.presentation.ui.map.MapView
 
@@ -35,7 +36,7 @@ class NavOptions : AppCompatActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
         }
-        toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
+        toggle = ActionBarDrawerToggle(this,drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 

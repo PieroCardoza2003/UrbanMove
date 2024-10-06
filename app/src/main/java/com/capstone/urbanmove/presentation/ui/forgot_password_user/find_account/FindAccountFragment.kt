@@ -25,6 +25,8 @@ class FindAccountFragment : Fragment() {
     ): View {
         _binding = FragmentFindAccountBinding.inflate(inflater, container, false)
 
+        binding.buttomClose.setOnClickListener { requireActivity().finish() }
+
         return binding.root
     }
 

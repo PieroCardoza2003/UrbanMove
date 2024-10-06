@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.capstone.urbanmove.R
-import com.capstone.urbanmove.databinding.FragmentNewPasswordBinding
 import com.capstone.urbanmove.databinding.FragmentVerifyCodeBinding
 import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordViewModel
 
@@ -22,6 +20,8 @@ class VerifyCodeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentVerifyCodeBinding.inflate(inflater, container, false)
+
+        binding.buttomClose.setOnClickListener { requireActivity().finish() }
 
         return binding.root
     }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urbanmove.databinding.ActivityAccountRevoceryBinding
-import com.capstone.urbanmove.presentation.ui.emaillogin.Login
 import com.capstone.urbanmove.presentation.ui.otpverification.OtpVerification
 
 class AccountRevocery : AppCompatActivity() {

@@ -53,6 +53,12 @@ dependencies {
 
     // Activity
     implementation "androidx.activity:activity-ktx:1.9.0"
+    // Fragment
+    implementation "androidx.fragment:fragment-ktx:1.7.1"
+    // Fragment Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.7'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.7'
+
     //googleService
     implementation platform('com.google.firebase:firebase-bom:33.2.0')
     implementation 'com.google.firebase:firebase-auth-ktx'

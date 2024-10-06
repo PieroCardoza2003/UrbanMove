@@ -1,4 +1,4 @@
-package com.capstone.urbanmove.presentation.ui.dateaccount
+package com.capstone.urbanmove.presentation.ui.eliminar1
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.capstone.urbanmove.presentation.ui.emaillogin
+package com.capstone.urbanmove.presentation.ui.login_user
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,9 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urbanmove.R
-import com.capstone.urbanmove.databinding.ActivityPhoneLoginBinding
+import com.capstone.urbanmove.databinding.ActivityLoginBinding
 import com.capstone.urbanmove.presentation.ui.recovery.AccountRevocery
-import com.capstone.urbanmove.presentation.ui.dateaccount.DateUser
+import com.capstone.urbanmove.presentation.ui.register_user.RegisterActivity
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -26,15 +26,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.io.IOException
 
-class Login : AppCompatActivity() {
-    private lateinit var binding: ActivityPhoneLoginBinding
+class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private var oneTapClient: SignInClient? = null
     private lateinit var signInRequest: BeginSignInRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPhoneLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         auth = Firebase.auth
@@ -61,7 +61,7 @@ class Login : AppCompatActivity() {
         }
 
         binding.register.setOnClickListener{
-            val intent = Intent(this, DateUser::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
     }

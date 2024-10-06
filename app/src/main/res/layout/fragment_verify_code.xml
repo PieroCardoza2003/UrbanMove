@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".presentation.ui.otpverification.OtpVerification">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,28 +34,45 @@
         <TextView
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_width="350dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Recupera tu cuenta"
+            android:text="Te enviamos un código"
             android:textColor="@color/black"
             android:textSize="50sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
 
         <TextView
             android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_width="350dp"
+            android:text="Introduzca el código que enviamos a "
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/showmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="email@email.com"
+            android:gravity="left"
+            android:textColor="@color/app_color_primary"
             android:textSize="19sp"
-            android:text="Introduce tu correo electrónico para buscar tu cuenta"/>
+            android:textStyle="bold"/>
+
+
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Correo electrónico"
+            android:hint="Código de verificación"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxCornerRadiusTopStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -67,25 +82,53 @@
             app:boxStrokeWidth="2dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailreco"
+                android:id="@+id/verifycode"
+                android:maxLength="5"
                 android:textColor="@color/black"
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/confirmmail"
+            android:id="@+id/btnverifycode"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:text="Verificar"
             android:backgroundTint="@color/app_color_primary"
             android:textColor="@color/white"
-            android:textStyle="bold"
             android:padding="18dp"
             android:layout_marginTop="20sp"
             android:textSize="20sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="No recibiste tu código?"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/resendOTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Reenviar código"
+                android:textColor="@color/app_color_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

@@ -1,27 +1,15 @@
-package com.capstone.urbanmove.presentation.ui.dateaccount
+package com.capstone.urbanmove.presentation.ui.eliminar1
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.capstone.urbanmove.databinding.ActivityDateUserBinding
-import android.app.DatePickerDialog
-import android.content.Intent
-import android.widget.EditText
-import android.widget.Toast
-import java.util.Calendar
-import androidx.activity.viewModels
-import com.capstone.urbanmove.NavOptions
-import com.capstone.urbanmove.domain.entity.UserBody
 
 class DateUser : AppCompatActivity() {
-    private lateinit var binding: ActivityDateUserBinding
-    private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        /*
         binding = ActivityDateUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val messagecrea = "Para activar su cuenta introduzca el código que enviamos a"
 
         binding.etFechaNacimiento.setOnClickListener{
             showDatePickerDialog(binding.etFechaNacimiento)
@@ -40,7 +28,7 @@ class DateUser : AppCompatActivity() {
             }
         }
 
-        /*
+
         binding.btnsavedata.setOnClickListener {
             val user = UserBody(
                 nombres = binding.etname.text.toString(),
@@ -55,6 +43,7 @@ class DateUser : AppCompatActivity() {
         }
          */
     }
+    /*
     private fun showDatePickerDialog(editText: EditText) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -73,4 +62,6 @@ class DateUser : AppCompatActivity() {
         )
         datePickerDialog.show()
     }
+
+     */
 }

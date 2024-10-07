@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.ActivityLoginBinding
 import com.capstone.urbanmove.domain.entity.Result
+import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
 import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordActivity
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterActivity
@@ -101,11 +102,11 @@ class LoginActivity : AppCompatActivity() {
                 Result.SUCCESS ->{
                     Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show()
                 }
-                Result.UNSUCCESS -> {
-                    Toast.makeText(this, "Las credenciales no son validas", Toast.LENGTH_LONG).show()
-                }
+                Result.UNSUCCESS -> Toast.makeText(this, "Las credenciales no son validas", Toast.LENGTH_LONG).show()
                 else -> {
-                    Toast.makeText(this, "Internal Error", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, ErrorActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }

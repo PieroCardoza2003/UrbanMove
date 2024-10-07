@@ -1,5 +1,6 @@
 package com.capstone.urbanmove.presentation.ui.forgot_password_user.new_password
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.capstone.urbanmove.databinding.FragmentNewPasswordBinding
 import com.capstone.urbanmove.domain.entity.Result
+import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
 import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordViewModel
 
@@ -38,7 +40,8 @@ class NewPasswordFragment : Fragment() {
                     requireActivity().finish()
                 }
                 else -> {
-                    Toast.makeText(requireContext(), "Internal error", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(context, ErrorActivity::class.java)
+                    startActivity(intent)
                     requireActivity().finish()
                 }
             }

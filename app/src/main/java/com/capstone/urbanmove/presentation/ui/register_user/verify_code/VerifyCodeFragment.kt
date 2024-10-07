@@ -1,5 +1,6 @@
 package com.capstone.urbanmove.presentation.ui.register_user.verify_code
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.FragmentVerifyCodeBinding
 import com.capstone.urbanmove.domain.entity.Result
+import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
 import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterViewModel
 
@@ -34,7 +36,11 @@ class VerifyCodeFragment : Fragment() {
             when(result) {
                 Result.SUCCESS -> findNavController().navigate(R.id.action_new_password)
                 Result.UNSUCCESS -> binding.layoutVerifycode.error = "El código ingresado es incorrecto"
-                else -> Toast.makeText(requireContext(), "Internal Error", Toast.LENGTH_SHORT).show()
+                else -> {
+                    val intent = Intent(context, ErrorActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
             }
         }
 

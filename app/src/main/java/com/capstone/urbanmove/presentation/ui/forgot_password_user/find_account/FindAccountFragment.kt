@@ -1,5 +1,6 @@
 package com.capstone.urbanmove.presentation.ui.forgot_password_user.find_account
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.FragmentCreateAccountBinding
 import com.capstone.urbanmove.databinding.FragmentFindAccountBinding
 import com.capstone.urbanmove.domain.entity.Result
+import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
 import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordViewModel
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterViewModel
@@ -38,7 +40,11 @@ class FindAccountFragment : Fragment() {
             when(result){
                 Result.SUCCESS -> findNavController().navigate(R.id.action_verify_code_forgotpassword)
                 Result.UNSUCCESS -> binding.layoutemail.error = "Esta cuenta no esta registrada"
-                else -> Toast.makeText(requireContext(), "Internal error", Toast.LENGTH_SHORT).show()
+                else -> {
+                    val intent = Intent(context, ErrorActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 package com.capstone.urbanmove.presentation.ui.register_user.create_account
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.FragmentCreateAccountBinding
 import com.capstone.urbanmove.domain.entity.Result
+import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
 import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterViewModel
 import com.capstone.urbanmove.utils.VerifyEmail
@@ -40,7 +42,11 @@ class CreateAccountFragment : Fragment() {
             when(result) {
                 Result.SUCCESS -> findNavController().navigate(R.id.action_verify_code)
                 Result.UNSUCCESS -> binding.layoutEmail.error = "No se ha podido registrar este email, intente con otro."
-                else -> Toast.makeText(requireContext(), "Internal error", Toast.LENGTH_SHORT).show()
+                else -> {
+                    val intent = Intent(context, ErrorActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
             }
         }
 

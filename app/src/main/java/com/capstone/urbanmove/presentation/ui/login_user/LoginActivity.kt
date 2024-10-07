@@ -14,6 +14,7 @@ import com.capstone.urbanmove.domain.entity.Result
 import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
 import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordActivity
+import com.capstone.urbanmove.presentation.ui.home_user.NavOptions
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterActivity
 import com.capstone.urbanmove.utils.VerifyEmail
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
@@ -101,6 +102,9 @@ class LoginActivity : AppCompatActivity() {
             when(result) {
                 Result.SUCCESS ->{
                     Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, NavOptions::class.java)
+                    startActivity(intent)
+                    finish()
                 }
                 Result.UNSUCCESS -> Toast.makeText(this, "Las credenciales no son validas", Toast.LENGTH_LONG).show()
                 else -> {

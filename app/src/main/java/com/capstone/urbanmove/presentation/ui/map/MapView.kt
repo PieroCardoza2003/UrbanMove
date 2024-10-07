@@ -12,7 +12,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.capstone.urbanmove.R
+import com.capstone.urbanmove.presentation.ui.map.Funcion.bottom.BottomSheet_Funcion
+import com.capstone.urbanmove.presentation.ui.map.Funcion.fragment_1
+import com.capstone.urbanmove.presentation.ui.map.Funcion.fragment_2
+import com.capstone.urbanmove.presentation.ui.map.Funcion.fragment_3
+import com.capstone.urbanmove.presentation.ui.map.Funcion.fragment_4
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -22,6 +28,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class MapView : AppCompatActivity(), OnMapReadyCallback {
 
@@ -39,11 +46,19 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
         initializeViews()
         createFragment()
         setupButtons()
+
+        // Mostrar el BottomSheet al iniciar la actividad
+        val bottomSheet = BottomSheet_Funcion()
+        bottomSheet.show(supportFragmentManager, BottomSheet_Funcion.TAG)
+
+        // Detectar cambios en el BackStack
+        supportFragmentManager.addOnBackStackChangedListener {
+            handleBackStackChange()
+        }
     }
 
     private fun initializeViews() {
-        searchingCard = findViewById(R.id.searching_card)
-        redBar = findViewById(R.id.red_bar)
+        // Aquí inicializar cualquier vista necesaria
     }
 
     private fun createFragment() {
@@ -56,7 +71,6 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
         val zoomInButton: ImageButton = findViewById(R.id.zoom_in_button)
         val zoomOutButton: ImageButton = findViewById(R.id.zoom_out_button)
         val myLocationButton: ImageButton = findViewById(R.id.my_location_button)
-        val closeButton: ImageButton = findViewById(R.id.close_button)
         val profileImage: ImageView = findViewById(R.id.profile_image)
 
         menuButton.setOnClickListener {
@@ -75,12 +89,8 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
             handleLocationButton()
         }
 
-        closeButton.setOnClickListener {
-            hideSearchingCard()
-        }
-
         profileImage.setOnClickListener {
-            // Handle profile image click if needed
+            // Manejar clic en la imagen de perfil si es necesario
         }
     }
 
@@ -101,26 +111,62 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun isLocationPermissionGranted(): Boolean {
-        return ContextCompat.checkSelfPermission(
-            this,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun requestLocationPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-        ) {
-            Toast.makeText(this, "Ve a ajustes y acepta los permisos", Toast.LENGTH_SHORT).show()
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE_LOCATION)
+    }
+
+    // Mostrar fragment_1 con botones visibles
+    private fun showFragment1() {
+        setButtonsVisibility(View.VISIBLE)
+        replaceFragment(fragment_1())
+    }
+
+    // Mostrar fragment_2 y ocultar botones
+    fun showFragment2() {
+        setButtonsVisibility(View.GONE)
+        replaceFragment(fragment_2())
+    }
+
+    // Mostrar fragment_3 con botones visibles
+    fun showFragment3() {
+        setButtonsVisibility(View.VISIBLE)
+        replaceFragment(fragment_3())
+    }
+
+    // Mostrar fragment_4 con botones visibles
+    fun showFragment4() {
+        setButtonsVisibility(View.VISIBLE)
+        replaceFragment(fragment_4())
+    }
+
+    // Reemplazar el fragment actual por otro
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commitAllowingStateLoss()
+    }
+
+    // Manejar el cambio de fragmentos en el BackStack
+    private fun handleBackStackChange() {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        if (currentFragment is fragment_2) {
+            setButtonsVisibility(View.GONE)  // Ocultar botones en fragment_2
         } else {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                REQUEST_CODE_LOCATION
-            )
+            setButtonsVisibility(View.VISIBLE)  // Mostrar botones en otros fragmentos
         }
+    }
+
+    // Controlar la visibilidad de los botones
+    private fun setButtonsVisibility(visibility: Int) {
+        findViewById<ImageButton>(R.id.menu_button).visibility = visibility
+        findViewById<ImageButton>(R.id.zoom_in_button).visibility = visibility
+        findViewById<ImageButton>(R.id.zoom_out_button).visibility = visibility
+        findViewById<ImageButton>(R.id.my_location_button).visibility = visibility
+        findViewById<ImageView>(R.id.profile_image).visibility = visibility
     }
 
     private fun showSearchingCard() {
@@ -139,13 +185,7 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
         setupMapUI()
     }
 
-    private fun setupMapUI() {
-        map.uiSettings.isZoomControlsEnabled = false
-        map.uiSettings.isMyLocationButtonEnabled = false
-    }
-
     private fun enableLocation() {
-        if (!::map.isInitialized) return
         if (isLocationPermissionGranted()) {
             map.isMyLocationEnabled = false // Desactiva el marcador azul predeterminado
 
@@ -166,10 +206,10 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
                     map.addCircle(
                         CircleOptions()
                             .center(userLocation)
-                            .radius(100.0) // Radio en metros
-                            .strokeColor(Color.RED) // Color del borde del círculo
-                            .fillColor(0x22FF0000) // Color de relleno (rojo con transparencia)
-                            .strokeWidth(4f) // Ancho del borde del círculo
+                            .radius(100.0)
+                            .strokeColor(Color.RED)
+                            .fillColor(0x22FF0000)
+                            .strokeWidth(4f)
                     )
 
                     // Mover la cámara a la ubicación del usuario
@@ -181,37 +221,19 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            REQUEST_CODE_LOCATION -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    enableLocation()
-                } else {
-                    Toast.makeText(
-                        this,
-                        "Para activar la localización ve a ajustes y acepta los permisos",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        }
+    private fun setupMapUI() {
+        map.uiSettings.isZoomControlsEnabled = false
+        map.uiSettings.isMyLocationButtonEnabled = false
     }
 
-    override fun onResumeFragments() {
-        super.onResumeFragments()
-        if (!::map.isInitialized) return
-        if (!isLocationPermissionGranted()) {
-            map.isMyLocationEnabled = false
-            Toast.makeText(
-                this,
-                "Para activar la localización ve a ajustes y acepta los permisos",
-                Toast.LENGTH_SHORT
-            ).show()
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == REQUEST_CODE_LOCATION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                handleLocationButton()
+            } else {
+                Toast.makeText(this, "Se requiere permiso de ubicación", Toast.LENGTH_SHORT).show()
+            }
         }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

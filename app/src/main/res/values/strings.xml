@@ -7,4 +7,6 @@
     <string name="zoom_in_button"></string>
     <string name="my_location_button"></string>
     <string name="close_button_description"></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

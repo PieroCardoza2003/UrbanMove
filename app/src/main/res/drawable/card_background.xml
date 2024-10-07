@@ -1,6 +1,5 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#FFFFFF"/> <!-- Color de fondo de la tarjeta -->
-    <corners android:radius="16dp"/> <!-- Bordes redondeados -->
-    <padding android:left="16dp" android:top="16dp" android:right="16dp" android:bottom="16dp"/>
+    <corners android:topLeftRadius="20dp" android:topRightRadius="20dp"/> <!-- Bordes redondeados -->
 </shape>

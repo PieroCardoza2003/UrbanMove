@@ -56,7 +56,6 @@
             android:id="@+id/showmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:text="email@email.com"
@@ -69,6 +68,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_verifycode"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -118,15 +118,15 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/resendOTP"
+                android:id="@+id/resendCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Reenviar código"
+                android:background="@color/white"
                 android:textColor="@color/app_color_primary"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
-
         </LinearLayout>
 
     </LinearLayout>

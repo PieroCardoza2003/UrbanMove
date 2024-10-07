@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.ActivityLoginBinding
 import com.capstone.urbanmove.domain.entity.Result
+import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordActivity
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterActivity
+import com.capstone.urbanmove.utils.VerifyEmail
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -34,6 +36,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var oneTapClient: SignInClient? = null
     private lateinit var signInRequest: BeginSignInRequest
+
+    private var loadDialogFragment: LoadDialogFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,11 +69,19 @@ class LoginActivity : AppCompatActivity() {
             if(email.isBlank()){
                 binding.edittextEmailLayout.errorIconDrawable = null
                 binding.edittextEmailLayout.error = "Este campo no puede estar vacío"
+                return@setOnClickListener
+            }
+            if (!VerifyEmail.isValid(email)){
+                binding.edittextEmailLayout.errorIconDrawable = null
+                binding.edittextEmailLayout.error = "El email es incorrecto"
+                return@setOnClickListener
             }
             if (password.isBlank()){
                 binding.edittextPasswordLayout.errorIconDrawable = null
                 binding.edittextPasswordLayout.error = "Este campo no puede estar vacío"
+                return@setOnClickListener
             }
+            showLoadAnimation(true)
             viewModel.loginUser(email, password)
         }
 
@@ -84,10 +96,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         viewModel.result.observe(this){ result ->
+            showLoadAnimation(false)
             when(result) {
-                Result.SUCCESS ->{}
+                Result.SUCCESS ->{
+                    Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show()
+                }
                 Result.UNSUCCESS -> {
-                    Toast.makeText(this, "Las credenciales no son validas", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Las credenciales no son validas", Toast.LENGTH_LONG).show()
                 }
                 else -> {
                     Toast.makeText(this, "Internal Error", Toast.LENGTH_SHORT).show()
@@ -96,6 +111,17 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun showLoadAnimation(state: Boolean) {
+        if (state) {
+            if (loadDialogFragment == null) {
+                loadDialogFragment = LoadDialogFragment("Validando datos")
+                loadDialogFragment?.show(supportFragmentManager, "load_dialog")
+            }
+        } else {
+            loadDialogFragment?.dismiss()
+            loadDialogFragment = null
+        }
+    }
 
     private suspend fun signingGoogle() {
         val result = oneTapClient?.beginSignIn(signInRequest)?.await()
@@ -116,6 +142,7 @@ class LoginActivity : AppCompatActivity() {
                         val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
                         auth.signInWithCredential(firebaseCredential).addOnCompleteListener {
                             if (it.isSuccessful) {
+                                showLoadAnimation(true)
                                 viewModel.loginWithGoogle(idToken)
                             }
                         }

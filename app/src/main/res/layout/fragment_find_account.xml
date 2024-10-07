@@ -54,6 +54,7 @@
             android:text="Introduce tu correo electrónico para buscar tu cuenta"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutemail"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -76,7 +77,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/confirmmail"
+            android:id="@+id/btnverificar"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:text="Verificar"

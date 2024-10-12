@@ -20,6 +20,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.home_user.pasajero.PassengerActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.common.ErrorActivity"
             android:exported="false" />
 

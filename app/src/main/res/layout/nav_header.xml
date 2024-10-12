@@ -1,43 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_marginTop="16dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
+    android:paddingTop="50dp"
+    android:paddingBottom="5dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
     android:background="@color/white">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_marginTop="30dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/ic_launcher_background"/>
-
+        android:id="@+id/imagen_perfil_pasajero"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/img_profile"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/user_name"
+        android:id="@+id/texview_nombre_pasajero"
         android:paddingTop="8dp"
         android:textSize="20sp"
-        android:text="Juan Carlos"
+        android:text="Name"
         android:textColor="@color/black"
         android:textStyle="bold"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/user_lastname"
-        android:textSize="20sp"
-        android:text="Ramirez Cruz"
-        android:textColor="@color/black"/>
-
-    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/underLine"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/textview_apellidos_pasajero"
+        android:textSize="20sp"
+        android:text="Last name"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

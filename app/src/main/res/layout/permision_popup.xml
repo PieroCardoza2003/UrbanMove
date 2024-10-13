@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/permission_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Se rechazó el permiso de la app."
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_go_to_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="configurar"
+        android:textColor="@color/app_color_primary"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="8dp" />
+</LinearLayout>

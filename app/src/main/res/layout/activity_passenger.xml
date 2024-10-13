@@ -37,13 +37,12 @@
             <Button
                 android:id="@+id/button_mode_conductor"
                 android:textColor="@color/white"
-                android:padding="10dp"
+                android:padding="15dp"
                 android:textSize="18sp"
                 android:text="Modo Conductor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-
 
     </com.google.android.material.navigation.NavigationView>
 

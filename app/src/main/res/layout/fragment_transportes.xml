@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.home_user.pasajero.mapview.bottomsheet.transportesFragment">
+
+    <View
+        android:layout_gravity="center"
+        android:layout_width="40dp"
+        android:layout_height="5dp"
+        android:background="@drawable/border_radius"
+        android:backgroundTint="@color/app_color_primary"/>
+
+    <TextView
+        android:id="@+id/textview_mensaje_bienvenida"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:text="Hola Full Names, ¿Qué transporte deseas tomar?"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/btn_transporte_microbus"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:background="@color/app_color_primary"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginLeft="60dp"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/icon_microbus"
+            android:padding="2dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:text="Microbús"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/btn_transporte_colectivo"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:background="@color/app_color_primary"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginLeft="60dp"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/icon_colectivo"
+            android:padding="2dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:text="Colectivo"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/btn_transporte_combi"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:background="@color/app_color_primary"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginLeft="60dp"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/icon_combi"
+            android:padding="2dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:text="Combi"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

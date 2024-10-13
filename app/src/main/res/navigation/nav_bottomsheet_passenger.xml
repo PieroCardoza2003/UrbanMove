@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bottomsheet_passenger"
+    app:startDestination="@id/transportesFragment">
+
+    <fragment
+        android:id="@+id/transportesFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.transportesFragment"
+        android:label="fragment_transportes"
+        tools:layout="@layout/fragment_transportes" />
+    <fragment
+        android:id="@+id/rutasFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.rutasFragment"
+        android:label="fragment_rutas"
+        tools:layout="@layout/fragment_rutas" />
+
+    <fragment
+        android:id="@+id/trayectoriaFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.trayectoriaFragment"
+        android:label="fragment_trayectoria"
+        tools:layout="@layout/fragment_trayectoria" />
+
+    <fragment
+        android:id="@+id/alcanceFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.AlcanceFragment"
+        android:label="fragment_alcance"
+        tools:layout="@layout/fragment_alcance" />
+
+    <fragment
+        android:id="@+id/busquedaFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.BusquedaFragment"
+        android:label="fragment_busqueda"
+        tools:layout="@layout/fragment_busqueda" />
+
+    <action
+        android:id="@+id/action_to_transporte"
+        app:destination="@id/transportesFragment" />
+
+    <action
+        android:id="@+id/action_to_rutas"
+        app:destination="@id/rutasFragment" />
+
+    <action
+        android:id="@+id/action_to_trayectoria"
+        app:destination="@id/trayectoriaFragment" />
+
+    <action
+        android:id="@+id/action_to_alcance"
+        app:destination="@id/alcanceFragment" />
+
+    <action
+        android:id="@+id/action_to_busqueda"
+        app:destination="@id/busquedaFragment" />
+
+</navigation>

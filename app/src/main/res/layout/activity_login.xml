@@ -114,6 +114,8 @@
         </FrameLayout>
 
         <TextView
+            android:clickable="true"
+            android:focusable="true"
             android:id="@+id/forgotpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -168,6 +170,8 @@
                 android:textAlignment="center"/>
 
             <TextView
+                android:clickable="true"
+                android:focusable="true"
                 android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -12,8 +12,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imagen_perfil_pasajero"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@drawable/img_profile"/>
 
     <TextView

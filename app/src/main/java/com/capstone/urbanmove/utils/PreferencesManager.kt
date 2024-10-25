@@ -17,6 +17,11 @@ class PreferencesManager(context: Context) {
         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
     )
 
+    fun removeSession(){
+        removeKey(Constants.ACCESS_TOKEN)
+        removeKey(Constants.REFRESH_TOKEN)
+    }
+
     fun setSession(accesstoken: String, refreshtoken: String){
         setKey(Constants.ACCESS_TOKEN, accesstoken)
         setKey(Constants.REFRESH_TOKEN, refreshtoken)
@@ -29,6 +34,12 @@ class PreferencesManager(context: Context) {
         if (accesstoken.isNullOrEmpty() || refreshtoken.isNullOrEmpty())
             return null
         return LoginResponse(accesstoken, refreshtoken)
+    }
+
+    private fun removeKey(key: String) {
+        val editor = sharedPreferences.edit()
+        editor.remove(key)
+        editor.apply()
     }
 
     private fun setKey(key: String, value: String) {

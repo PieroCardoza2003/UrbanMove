@@ -21,7 +21,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:text="Hola Full Names, ¿Qué transporte deseas tomar?"
+        android:text="Hola, ¿Qué transporte deseas tomar?"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

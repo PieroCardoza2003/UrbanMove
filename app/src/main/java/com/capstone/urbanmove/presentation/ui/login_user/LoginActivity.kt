@@ -15,6 +15,7 @@ import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
 import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordActivity
 import com.capstone.urbanmove.presentation.ui.home_user.NavOptions
+import com.capstone.urbanmove.presentation.ui.home_user.pasajero.PassengerActivity
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterActivity
 import com.capstone.urbanmove.utils.VerifyEmail
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
@@ -101,8 +102,7 @@ class LoginActivity : AppCompatActivity() {
             showLoadAnimation(false)
             when(result) {
                 Result.SUCCESS ->{
-                    Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, NavOptions::class.java)
+                    val intent = Intent(this, PassengerActivity::class.java)
                     startActivity(intent)
                     finish()
                 }

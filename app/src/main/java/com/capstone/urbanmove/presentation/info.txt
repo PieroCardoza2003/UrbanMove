@@ -1,4 +1,4 @@
-
+android:usesCleartextTraffic="true"
 
                /data
                   /api          # Módulos para las llamadas a APIs remotas

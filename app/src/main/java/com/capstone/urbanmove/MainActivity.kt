@@ -3,18 +3,33 @@ package com.capstone.urbanmove
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.capstone.urbanmove.presentation.ui.home_user.NavOptions
 import com.capstone.urbanmove.presentation.ui.home_user.pasajero.PassengerActivity
 import com.capstone.urbanmove.presentation.ui.login_user.LoginActivity
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
+        val splashScreen = installSplashScreen()
 
-        val intent = Intent(this, PassengerActivity::class.java)
-        startActivity(intent)
-        finish()
+        splashScreen.setKeepOnScreenCondition{
+            viewModel.isLogged.value == null
+        }
+
+        viewModel.isLogged.observe(this) { isLogged ->
+            val intent = when (isLogged) {
+                "PASAJERO" -> Intent(this, PassengerActivity::class.java)
+                "CONDUCTOR" -> Intent(this, PassengerActivity::class.java)
+                else -> Intent(this, LoginActivity::class.java)
+            }
+            startActivity(intent)
+            finish()
+        }
+
+        viewModel.checkIsLogged()
     }
 }

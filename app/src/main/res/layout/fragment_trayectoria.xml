@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.home_user.pasajero.mapview.bottomsheet.trayectoriaFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="5dp"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="@color/app_color_primary"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:text="Seleccione la trayectoria del transporte."
+                android:background="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_marginStart="15dp"
+                android:id="@+id/buttom_close"
+                android:background="@drawable/circle_background"
+                android:backgroundTint="#F3F3F3"
+                android:src="@drawable/icon_close"
+                android:scaleType="fitCenter"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/btn_ida"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:background="@drawable/bg_btn_border_selected"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@drawable/border_radius"
+                android:backgroundTint="@color/app_color_primary"
+                android:src="@drawable/icon_arrow_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:padding="18dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Ida   "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="0dp"/>
+
+        <LinearLayout
+            android:id="@+id/btn_vuelta"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:background="@drawable/bg_btn_border_unselected"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@drawable/border_radius"
+                android:backgroundTint="@color/app_color_primary"
+                android:src="@drawable/icon_arrow_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:padding="18dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Vuelta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_iniciar_busqueda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Iniciar búsqueda"
+        android:backgroundTint="@color/app_color_primary"
+        android:textColor="@color/white"
+        android:padding="18dp"
+        android:layout_gravity="center"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_alcance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cambiar alcance de busqueda"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:textSize="18sp" />
+
+</LinearLayout>

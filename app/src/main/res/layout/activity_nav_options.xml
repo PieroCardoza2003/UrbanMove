@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.home_user.NavOptions">
+
+    <!-- Contenido Principal -->
+    <FrameLayout
+        android:id="@+id/frameLayoutNav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!-- FloatingActionButton para el menú hamburguesa -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|top"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_menu_hamburguer"
+            app:fabSize="auto"
+        app:tint="@color/white"
+        app:backgroundTint="@color/app_color_primary" />
+
+    </FrameLayout>
+
+    <!-- NavigationView -->
+    <com.google.android.material.navigation.NavigationView
+
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="false"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/app_color_primary">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/app_color_primary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="My Toolbar"
+            app:titleTextColor="@android:color/white"
+            android:visibility="gone"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="start">
+
+            <!-- Header Layout (Optional) -->
+            <include
+                layout="@layout/nav_header" />
+
+            <!-- Menu items from nav_menu.xml -->
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                app:itemTextColor="@color/black"
+                app:itemTextAppearance="@style/CustomTextAppearance"
+                app:itemIconTint="@color/app_color_primary"
+                app:menu="@menu/nav_menu"/>
+
+            <!-- Button placed just below the menu items -->
+            <Button
+                android:id="@+id/nav_modoconductor_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Modo Conductor"
+                android:background="@drawable/nav_buttonconductor"
+                android:textColor="@android:color/white"
+                android:padding="15dp"
+                android:textSize="17sp"
+                android:layout_margin="16dp"
+                android:layout_marginBottom="50dp"/>
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>

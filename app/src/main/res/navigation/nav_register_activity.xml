@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_register_activity"
+    app:startDestination="@id/createAccountFragment">
+
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.register_user.create_account.CreateAccountFragment"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" />
+
+    <fragment
+        android:id="@+id/verifyCodeFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.register_user.verify_code.VerifyCodeFragment"
+        android:label="VerifyCodeFragment"
+        tools:layout="@layout/fragment_verify_code" />
+
+    <fragment
+        android:id="@+id/newPasswordFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.register_user.new_password.NewPasswordFragment"
+        android:label="NewPasswordFragment"
+        tools:layout="@layout/fragment_new_password" />
+
+    <action
+        android:id="@+id/action_create_account"
+        app:destination="@id/createAccountFragment"/>
+
+    <action
+        android:id="@+id/action_verify_code"
+        app:destination="@id/verifyCodeFragment"/>
+
+    <action
+        android:id="@+id/action_new_password"
+        app:destination="@id/newPasswordFragment"/>
+
+</navigation>

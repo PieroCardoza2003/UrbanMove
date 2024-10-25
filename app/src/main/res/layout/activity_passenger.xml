@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.home_user.pasajero.PassengerActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentcontainer_map_passenger"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/nav_passenger_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:background="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/navigation_drawer"
+        android:layout_gravity="start"
+        app:itemIconTint="@color/app_color_primary"
+        app:itemTextColor="@color/black"
+        app:headerLayout="@layout/nav_header"
+        app:itemVerticalPadding="15dp"
+        app:menu="@menu/nav_menu">
+
+        <LinearLayout
+            android:gravity="bottom"
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_mode_conductor"
+                android:textColor="@color/white"
+                android:padding="15dp"
+                android:textSize="18sp"
+                android:text="Modo Conductor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Urban Move</string>
+
+    <string name="default_web_client_id">1071956001217-dj1rqfu8r2h1sujrbbun10udkts5c1dj.apps.googleusercontent.com</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string name="icon_title_map">Mapa</string>
+    <string name="icon_title_settings">Configuración</string>
+    <string name="icon_title_help">Ayuda</string>
+    <string name="icon_title_logout">Cerrar Sesión</string>
+
+    <string name="menu_button"></string>
+    <string name="profile_image_desc"></string>
+    <string name="zoom_button_desc"></string>
+    <string name="zoom_out_button"></string>
+    <string name="zoom_in_button"></string>
+    <string name="my_location_button"></string>
+    <string name="close_button_description"></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,0 +1,23 @@
+android:usesCleartextTraffic="true"
+
+               /data
+                  /api          # Módulos para las llamadas a APIs remotas
+                  /database     # Implementación de base de datos local (Room, SQLite)
+                  /repository   # Implementaciones de los repositorios
+                  /model        # Modelos de datos que provienen de la capa de datos (DTOs)
+                  /mappers      # Conversión entre modelos de dominio y DTOs
+               /domain
+                  /model        # Modelos del dominio (entidades de negocio)
+                  /repository   # Interfaces de los repositorios
+                  /usecase      # Lógica de negocio y casos de uso
+               /presentation
+                  /ui
+                     /feature1  # Paquete de una característica específica
+                        /viewmodel  # ViewModel para la lógica de presentación
+                        /view       # Actividades, Fragmentos y Composables
+                        /adapter    # Adaptadores para RecyclerView o listas
+                     /feature2      # Otra característica específica
+                  /navigation       # Navegación entre pantallas
+                  /common           # Elementos comunes, como clases base o utils
+               /di
+                  /modules          # Módulos de inyección de dependencias (Dagger/Hilt)

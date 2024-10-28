@@ -7,13 +7,19 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvBuscadorMatriculas"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pedro Cabro"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Selecciona la matrícula"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/text_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/prueba"

@@ -36,8 +36,8 @@ class MatriculasFragment: BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         fetchMarcas()
 
-        val ivClose = binding.ivClose
-        ivClose.setOnClickListener {
+
+        binding.ivClose.setOnClickListener {
             dismiss()
         }
     }
@@ -45,16 +45,15 @@ class MatriculasFragment: BottomSheetDialogFragment() {
         lifecycleScope.launch {
             try {
                 val marcas = RetrofitInstance.api.getMarcas()
-                val marcaNombres = marcas.map { it.marca }.sorted()
-                setupRecyclerView(marcaNombres)
+                setupRecyclerView(marcas.sortedBy { it.marca })
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun setupRecyclerView(marcaNombres: List<String>) {
-        adapter = ItemMatriculaAdapter(marcaNombres) { item ->
+    private fun setupRecyclerView(marcas: List<Marca>) {
+        adapter = ItemMatriculaAdapter(marcas) { item ->
             listener?.onItemSelected(item) // Llama al método de la interfaz
             dismiss() // Cierra el BottomSheet después de la selección
         }
@@ -65,8 +64,6 @@ class MatriculasFragment: BottomSheetDialogFragment() {
 
     override fun onStart() {
         super.onStart()
-
-        // Ajusta el tamaño máximo para el BottomSheet
         dialog?.let { dialog ->
             val bottomSheet = dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
             bottomSheet?.layoutParams?.height = 800 // píxeles
@@ -78,6 +75,6 @@ class MatriculasFragment: BottomSheetDialogFragment() {
         _binding = null
     }
     interface OnItemSelectedListener {
-        fun onItemSelected(item: String)
+        fun onItemSelected(item: Marca)
     }
 }

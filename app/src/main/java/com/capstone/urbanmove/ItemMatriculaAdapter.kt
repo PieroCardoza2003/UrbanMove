@@ -6,13 +6,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class ItemMatriculaAdapter(private val items: List<String>,private val onItemClick: (String) -> Unit)
+class ItemMatriculaAdapter(private val items: List<Marca>,private val onItemClick: (Marca) -> Unit)
     : RecyclerView.Adapter<ItemMatriculaAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textViewItemName: TextView = itemView.findViewById(R.id.textViewItemName)
 
-        fun bind(item: String) {
-            textViewItemName.text = item
+        fun bind(item: Marca) {
+            textViewItemName.text = item.marca
             itemView.setOnClickListener {
                 onItemClick(item)
             }

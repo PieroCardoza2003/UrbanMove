@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -15,8 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.UrbanMove"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".Tes_components.MarcaFragment"
+            android:exported="false" />
+        <activity
+            android:name=".Tes_components.ItemMarcaAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".Tes_components.MarcaActivity"
+            android:exported="false" />
 
         <activity
             android:name=".presentation.ui.map.MapView"
@@ -24,7 +31,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MainActivity"

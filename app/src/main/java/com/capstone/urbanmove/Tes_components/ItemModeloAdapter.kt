@@ -16,7 +16,7 @@ class ItemModeloAdapter(
         private val textViewItemName: TextView = itemView.findViewById(R.id.textViewItemName)
 
         fun bind(item: Modelo) {
-            textViewItemName.text = item.id_modelo.toString()
+            textViewItemName.text = item.modelo
             itemView.setOnClickListener {
                 onItemClick(item)
             }

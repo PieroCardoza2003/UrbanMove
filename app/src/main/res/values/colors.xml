@@ -6,5 +6,6 @@
     <color name="app_color_gray">#E9E3E3</color>
     <color name="colorSelected">#EC162A</color>
     <color name="colorUnselected">#BDBDBD</color>
+    <color name="light_gray">#E9E9E9</color>
 
 </resources>

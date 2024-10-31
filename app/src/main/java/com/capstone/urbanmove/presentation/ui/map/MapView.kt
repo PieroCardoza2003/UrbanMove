@@ -1,6 +1,7 @@
 package com.capstone.urbanmove.presentation.ui.map
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
@@ -14,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.capstone.urbanmove.R
+import com.capstone.urbanmove.Tes_components.InfoVehiculoActivity
 import com.capstone.urbanmove.presentation.ui.map.Funcion.bottom.BottomSheet_Funcion
 import com.capstone.urbanmove.presentation.ui.map.Funcion.fragment_1
 import com.capstone.urbanmove.presentation.ui.map.Funcion.fragment_2
@@ -28,7 +30,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class MapView : AppCompatActivity(), OnMapReadyCallback {
 
@@ -90,7 +91,8 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
         }
 
         profileImage.setOnClickListener {
-            // Manejar clic en la imagen de perfil si es necesario
+            val i = Intent(this,InfoVehiculoActivity::class.java)
+            startActivity(i)
         }
     }
 
@@ -236,4 +238,6 @@ class MapView : AppCompatActivity(), OnMapReadyCallback {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+    //Función para abrir la información del vehículo, solo para probar, después borrar función
+
 }

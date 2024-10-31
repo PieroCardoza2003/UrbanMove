@@ -42,12 +42,19 @@ class MarcaFragment: BottomSheetDialogFragment() {
         }
     }
     private fun fetchMarcas() {
+        //Muestra progress bar hasta que se carguen los datos
+        binding.progressBarMarca.visibility = View.VISIBLE
+        binding.rvMarca.visibility = View.GONE
         lifecycleScope.launch {
             try {
                 val marcas = RetrofitInstance.api.getMarcas()
                 setupRecyclerView(marcas.sortedBy { it.marca })
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }finally {
+                // Ocultar al progress bar si se cargaron los datos
+                binding.progressBarMarca.visibility = View.GONE
+                binding.rvMarca.visibility = View.VISIBLE
             }
         }
     }

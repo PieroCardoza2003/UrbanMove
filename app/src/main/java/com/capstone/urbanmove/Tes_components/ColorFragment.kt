@@ -45,12 +45,19 @@ class ColorFragment : BottomSheetDialogFragment() {
     }
 
     private fun fetchColors() {
+        //Muestra progress bar hasta que se carguen los datos
+        binding.progressBarColor.visibility = View.VISIBLE
+        binding.rvColor.visibility = View.GONE
         lifecycleScope.launch {
             try {
                 val colors = RetrofitInstance.api.getColor() // Cambié a `getColors()`
                 setupRecyclerView(colors.sortedBy { it.color })
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }finally {
+                // Ocultar al progress bar si se cargaron los datos
+                binding.progressBarColor.visibility = View.GONE
+                binding.rvColor.visibility = View.VISIBLE
             }
         }
     }

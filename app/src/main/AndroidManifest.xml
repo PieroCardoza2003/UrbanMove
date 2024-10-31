@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,15 +17,14 @@
         android:theme="@style/Base.Theme.UrbanMove"
         tools:targetApi="31">
         <activity
+            android:name=".Tes_components.InfoVehiculoActivity"
+            android:exported="false" />
+        <activity
             android:name=".Tes_components.MarcaFragment"
             android:exported="false" />
         <activity
             android:name=".Tes_components.ItemMarcaAdapter"
             android:exported="false" />
-        <activity
-            android:name=".Tes_components.MarcaActivity"
-            android:exported="false" />
-
         <activity
             android:name=".presentation.ui.map.MapView"
             android:exported="false" />

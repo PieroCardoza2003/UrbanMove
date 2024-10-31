@@ -26,5 +26,5 @@ interface ApiService {
     suspend fun getModelos(@Path("id") idMarca: Int): List<Modelo>
 
     @GET("api/vehicle/colors")
-    suspend fun getColor(): List<Color>
+    suspend fun getColor(): List<VehicleColor>
 }

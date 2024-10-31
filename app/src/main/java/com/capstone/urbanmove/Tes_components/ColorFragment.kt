@@ -50,7 +50,7 @@ class ColorFragment : BottomSheetDialogFragment() {
         binding.rvColor.visibility = View.GONE
         lifecycleScope.launch {
             try {
-                val colors = RetrofitInstance.api.getColor() // Cambié a `getColors()`
+                val colors = RetrofitInstance.api.getColor()
                 setupRecyclerView(colors.sortedBy { it.color })
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -62,7 +62,7 @@ class ColorFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun setupRecyclerView(colors: List<Color>) {
+    private fun setupRecyclerView(colors: List<VehicleColor>) {
         adapter = ItemColorAdapter(colors) { item ->
             listener?.onItemSelected(item)
             dismiss()
@@ -87,6 +87,6 @@ class ColorFragment : BottomSheetDialogFragment() {
     }
 
     interface OnItemSelectedListener {
-        fun onItemSelected(item: Color)
+        fun onItemSelected(item: VehicleColor)
     }
 }

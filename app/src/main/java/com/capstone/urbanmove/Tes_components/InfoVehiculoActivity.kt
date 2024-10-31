@@ -97,7 +97,7 @@ class InfoVehiculoActivity : AppCompatActivity(),
         selectedIdModelo = item.id_modelo
         findViewById<TextView>(R.id.tvModeloVehiculo).text = item.modelo
     }
-    override fun onItemSelected(item: Color) {
+    override fun onItemSelected(item: VehicleColor) {
         selectedIdColor = item.id_color
         findViewById<TextView>(R.id.tvColorVehiculo).text = item.color
     }

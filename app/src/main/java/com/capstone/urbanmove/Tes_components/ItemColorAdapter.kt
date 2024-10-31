@@ -6,15 +6,24 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.urbanmove.R
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 
-class ItemColorAdapter(private val items: List<Color>, private val onItemClick: (Color) -> Unit)
+class ItemColorAdapter(private val items: List<VehicleColor>, private val onItemClick: (VehicleColor) -> Unit)
     : RecyclerView.Adapter<ItemColorAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val textViewItemName: TextView = itemView.findViewById(R.id.textViewItemName)
+        private val colorName: TextView = itemView.findViewById(R.id.colorName)
+        private val colorCircle: View = itemView.findViewById(R.id.colorCircle)
 
-        fun bind(item: Color) {
-            textViewItemName.text = item.color
+        fun bind(item: VehicleColor) {
+            colorName.text = item.color
+            try {
+                (colorCircle.background as GradientDrawable).setColor(Color.parseColor("#${item.code}"))
+            } catch (e: IllegalArgumentException) {
+                colorCircle.setBackgroundColor(Color.GRAY) // Color por defecto si hay un error
+            }
+
             itemView.setOnClickListener {
                 onItemClick(item)
             }
@@ -22,7 +31,7 @@ class ItemColorAdapter(private val items: List<Color>, private val onItemClick: 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_element, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_color, parent, false)
         return ViewHolder(view)
     }
 

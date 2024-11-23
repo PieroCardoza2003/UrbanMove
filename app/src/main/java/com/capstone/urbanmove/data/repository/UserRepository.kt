@@ -1,5 +1,6 @@
 package com.capstone.urbanmove.data.repository
 
+import com.capstone.urbanmove.data.remote.models.ConductorEmpresaRequest
 import com.capstone.urbanmove.data.remote.models.LoginGoogleRequest
 import com.capstone.urbanmove.data.remote.models.LoginResponse
 import com.capstone.urbanmove.data.remote.models.LoginUserRequest
@@ -8,6 +9,7 @@ import com.capstone.urbanmove.data.remote.user.UserService
 import com.capstone.urbanmove.data.remote.models.RegisterUserRequest
 import com.capstone.urbanmove.data.remote.models.VerifyAccountRequest
 import com.capstone.urbanmove.data.remote.models.VerifyCodeRequest
+import okhttp3.MultipartBody
 
 class UserRepository {
     private val api = UserService()
@@ -34,5 +36,19 @@ class UserRepository {
 
     suspend fun loginGoogle(request: LoginGoogleRequest): LoginResponse?{
         return api.loginGoogle(request)
+    }
+
+    suspend fun createConductorEmpresa(
+        conductor: ConductorEmpresaRequest,
+        fotoperfil: MultipartBody.Part?,
+        licenciaFrontal: MultipartBody.Part,
+        licenciaReverso: MultipartBody.Part
+    ): Any?{
+        return api.createConductorEmpresa(
+            conductor = conductor,
+            fotoperfil = fotoperfil,
+            licenciaFrontal = licenciaFrontal,
+            licenciaReverso = licenciaReverso
+        )
     }
 }

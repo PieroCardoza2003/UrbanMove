@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.home_user.conductor.mapview.bottomshet.alcanceDriverFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="5dp"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="@color/app_color_primary"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:text="Seleccione el rango de alcance de búsqueda."
+                android:background="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_marginStart="15dp"
+                android:id="@+id/buttom_close"
+                android:background="@drawable/circle_background"
+                android:backgroundTint="#F3F3F3"
+                android:src="@drawable/icon_close"
+                android:scaleType="fitCenter"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <SeekBar
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:max="5"
+        android:progressTint="@color/app_color_primary"
+        android:thumbTint="@color/app_color_primary"
+        android:id="@+id/seekBar_alcance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="500m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+        <TextView
+            android:text="1km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_guardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:backgroundTint="@color/app_color_primary"
+        android:textColor="@color/white"
+        android:padding="18dp"
+        android:layout_gravity="center"
+        android:textSize="20sp" />
+
+</LinearLayout>

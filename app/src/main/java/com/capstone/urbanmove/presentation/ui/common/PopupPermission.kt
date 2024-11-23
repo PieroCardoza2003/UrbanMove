@@ -20,6 +20,8 @@ class PopupPermission(private val activity: Activity) {
     fun permissionType(permission: String): String {
         return when (permission) {
             Manifest.permission.ACCESS_FINE_LOCATION -> "ubicación"
+            Manifest.permission.READ_MEDIA_IMAGES -> "fotos"
+            Manifest.permission.READ_EXTERNAL_STORAGE -> "fotos"
             else -> "desconocido"
         }
     }

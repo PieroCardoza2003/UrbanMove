@@ -7,9 +7,13 @@ import com.capstone.urbanmove.data.remote.models.NewPasswordRequest
 import com.capstone.urbanmove.data.remote.models.RegisterUserRequest
 import com.capstone.urbanmove.data.remote.models.VerifyAccountRequest
 import com.capstone.urbanmove.data.remote.models.VerifyCodeRequest
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
+import retrofit2.http.Query
 
 interface UserApiClient {
 
@@ -31,5 +35,20 @@ interface UserApiClient {
     @POST("/api/user/verify-code")
     suspend fun verifyCode(@Body request: VerifyCodeRequest): Response<*>
 
+    @Multipart
+    @POST("/api/driver/register-company")
+    suspend fun createConductorEmpresa(
+        @Query("id_usuario") id_usuario: String,
+        @Query("nombre") nombre: String,
+        @Query("apellido") apellido: String,
+        @Query("fecha_nacimiento") fecha_nacimiento: String,
+        @Query("foto_perfil") foto_perfil: String?,
+        @Query("numero_licencia") numero_licencia: String,
+        @Query("fecha_vencimiento") fecha_vencimiento: String,
+        @Query("codigo_empleado") codigo_empleado: String,
 
+        @Part fotoperfil: MultipartBody.Part?,
+        @Part licencia_frontal: MultipartBody.Part,
+        @Part licencia_reverso: MultipartBody.Part
+    ): Response<*>
 }

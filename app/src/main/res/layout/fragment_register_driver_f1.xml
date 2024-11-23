@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".presentation.ui.home_user.conductor.registerDriver.RegisterDriverF1Fragment">
+
+    <LinearLayout
+        android:id="@+id/bar"
+        android:padding="18dp"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Modo conductor"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/bar"
+        android:orientation="vertical"
+        android:padding="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingBottom="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:text="Seleccione el tipo de transporte que conducirá."
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:background="@color/app_color_primary"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_radius"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/icon_transporte_empresa"
+                android:padding="6dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:text="Conductor de Empresa"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_microbus_empresa"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:background="@color/app_color_gray_low"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:text="Microbús"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/baseline_navigate_next_24"
+                android:padding="4dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_combi_empresa"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:background="@color/app_color_gray_low"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:text="Combi"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/baseline_navigate_next_24"
+                android:padding="4dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"/>
+
+        <LinearLayout
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:background="@color/app_color_primary"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_radius"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/icon_transporte_privado"
+                android:padding="6dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:text="Conductor Privado"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/btn_colectivo_privado"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:background="@color/app_color_gray_low"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:text="Colectivo"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/baseline_navigate_next_24"
+                android:padding="4dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <Button
+            android:padding="10dp"
+            android:id="@+id/button_modo_pasajero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ir al modo pasajero"
+            android:backgroundTint="@color/app_color_primary"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="18sp" />
+
+        <Button
+            android:padding="10dp"
+            android:id="@+id/button_cerrar_sesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesión"
+            android:backgroundTint="@color/app_color_gray_low"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</RelativeLayout>

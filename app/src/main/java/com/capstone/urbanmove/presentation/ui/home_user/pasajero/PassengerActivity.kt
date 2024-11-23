@@ -6,17 +6,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
+import com.bumptech.glide.Glide
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.ActivityPassengerBinding
 import com.capstone.urbanmove.databinding.NavHeaderBinding
 import com.capstone.urbanmove.domain.entity.Result
 import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
-import com.capstone.urbanmove.presentation.ui.home_user.HelpFragment
-import com.capstone.urbanmove.presentation.ui.home_user.SettingsFragment
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.DriverActivity
 import com.capstone.urbanmove.presentation.ui.login_user.LoginActivity
-import com.capstone.urbanmove.presentation.ui.map.MapView
 
 class PassengerActivity : AppCompatActivity() {
 
@@ -34,8 +31,13 @@ class PassengerActivity : AppCompatActivity() {
             when(result) {
                 Result.SUCCESS ->{
                     val drawerBinding = NavHeaderBinding.bind(binding.navigationDrawer.getHeaderView(0))
-                    drawerBinding.texviewNombrePasajero.text = viewModel.user.nombres
-                    drawerBinding.textviewApellidosPasajero.text = viewModel.user.apellidos ?: ""
+                    drawerBinding.texviewNombrePasajero.text = viewModel.user.value!!.nombres
+                    drawerBinding.textviewApellidosPasajero.text = viewModel.user.value!!.apellidos ?: ""
+                    if (viewModel.user.value!!.foto_perfil != null) {
+                        Glide.with(this)
+                            .load(viewModel.user.value!!.foto_perfil)
+                            .into(drawerBinding.imagenPerfilPasajero)
+                    }
                 }
                 else -> {
                     val intent = Intent(this, ErrorActivity::class.java)
@@ -46,8 +48,9 @@ class PassengerActivity : AppCompatActivity() {
         }
 
         binding.buttonModeConductor.setOnClickListener {
-            Toast.makeText(applicationContext,"Modo conductor", Toast.LENGTH_SHORT).show()
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, DriverActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         binding.navigationDrawer.setNavigationItemSelectedListener { item ->

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.ui.home_user.conductor.registerDriver.privado.RegisterDriverPrivadoFragment">
+
+    <LinearLayout
+        android:id="@+id/bar"
+        android:padding="18dp"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Modo conductor"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/bar"
+        android:padding="35dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:paddingBottom="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:text="Información del vehículo"
+            android:background="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_numero_placa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número de placa"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="10dp"
+            android:layout_marginTop="15dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/bg_btn_border_unselected"
+                android:id="@+id/edittext_numero_placa"
+                android:textColor="@color/black"
+                android:inputType="textCapWords"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_marca_vehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Marca del vehículo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="10dp"
+            android:layout_marginTop="15dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/bg_btn_border_unselected"
+                android:id="@+id/edittext_marca_vehiculo"
+                android:textColor="@color/black"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="textCapWords"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_modelo_vehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Modelo del vehículo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="10dp"
+            android:layout_marginTop="15dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/bg_btn_border_unselected"
+                android:id="@+id/edittext_modelo_vehiculo"
+                android:textColor="@color/black"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="textCapWords"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_color_vehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Color del vehículo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="10dp"
+            android:layout_marginTop="15dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/bg_btn_border_unselected"
+                android:id="@+id/edittext_color_vehiculo"
+                android:textColor="@color/black"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="textCapWords"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <Button
+            android:id="@+id/btn_aceptar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aceptar"
+            android:backgroundTint="@color/app_color_primary"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:layout_marginTop="32sp"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

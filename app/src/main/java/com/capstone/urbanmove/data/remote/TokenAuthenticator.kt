@@ -1,5 +1,6 @@
 package com.capstone.urbanmove.data.remote
 
+import android.util.Log
 import com.capstone.urbanmove.MainApplication.Companion.preferencesManager
 import com.capstone.urbanmove.data.remote.models.ResponseToken
 import kotlinx.coroutines.runBlocking
@@ -13,13 +14,13 @@ class TokenAuthenticator : Authenticator{
     override fun authenticate(route: Route?, response: Response): Request? {
         synchronized(this){
             return runBlocking {
-                val refreshToken = preferencesManager.getSession()
-                val newToken = TokenSessionService().getNewAccessToken(ResponseToken(refreshToken?.refresh_token ?: ""))
+                val refreshToken = preferencesManager.getSession()?.refresh_token ?: ""
+                val newToken = TokenSessionService().getNewAccessToken(ResponseToken(refreshToken))
 
                 if(newToken != null){
-                    preferencesManager.setSession(newToken.token, refreshToken!!.refresh_token)
+                    preferencesManager.setSession(newToken.token, refreshToken)
                     response.request().newBuilder()
-                        .addHeader("Authorization", "Bearer ${newToken.token}")
+                        .header("Authorization", "Bearer ${newToken.token}")
                         .build()
                 }else{
                     null

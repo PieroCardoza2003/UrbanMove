@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bottomsheet_driver"
+    app:startDestination="@id/rutaDriverFragment">
+
+    <fragment
+        android:id="@+id/rutaDriverFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.conductor.mapview.bottomshet.rutaDriverFragment"
+        android:label="fragment_ruta_driver"
+        tools:layout="@layout/fragment_ruta_driver" />
+    <fragment
+        android:id="@+id/alcanceDriverFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.conductor.mapview.bottomshet.alcanceDriverFragment"
+        android:label="fragment_alcance_driver"
+        tools:layout="@layout/fragment_alcance_driver" />
+
+    <action
+        android:id="@+id/action_to_ruta_driver"
+        app:destination="@id/rutaDriverFragment" />
+
+    <action
+        android:id="@+id/action_to_alcance_driver"
+        app:destination="@id/alcanceDriverFragment" />
+
+</navigation>

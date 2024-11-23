@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.urbanmove.MainApplication.Companion.preferencesManager
-import com.capstone.urbanmove.data.remote.models.LoginUserRequest
 import com.capstone.urbanmove.data.remote.models.UsuarioDataResponse
 import com.capstone.urbanmove.domain.entity.Result
 import com.capstone.urbanmove.domain.usecase.GetDataUserUseCase
@@ -14,17 +13,17 @@ import java.io.IOException
 class PassengerViewModel: ViewModel() {
 
     var getdatauser = GetDataUserUseCase()
-    lateinit var user: UsuarioDataResponse
+    val user = MutableLiveData<UsuarioDataResponse>()
 
     val result = MutableLiveData<Result>()
 
-    fun loaddata(){
+    fun loaddata() {
         viewModelScope.launch {
             try {
                 val response = getdatauser()
 
                 if (response != null) {
-                    user = response
+                    user.postValue(response)
                     result.postValue(Result.SUCCESS)
                 } else {
                     result.postValue(Result.UNSUCCESS)
@@ -36,12 +35,6 @@ class PassengerViewModel: ViewModel() {
         }
     }
 
-    fun getname(): String{
-        if (::user.isInitialized){
-            return user.nombres
-        }
-        return ""
-    }
 
     fun closeSession(){
         preferencesManager.removeSession()

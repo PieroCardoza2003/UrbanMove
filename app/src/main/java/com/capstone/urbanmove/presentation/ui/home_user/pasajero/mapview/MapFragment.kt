@@ -16,7 +16,6 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,9 +26,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.FragmentMapBinding
 import com.capstone.urbanmove.presentation.ui.common.PopupPermission
+import com.capstone.urbanmove.presentation.ui.home_user.pasajero.PassengerViewModel
 import com.capstone.urbanmove.utils.RandomColor
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.*
@@ -48,6 +49,7 @@ import com.google.android.gms.maps.model.CircleOptions
 class MapFragment : Fragment(), OnMapReadyCallback {
 
     private val viewModelMap: MapViewModel by activityViewModels() //viewModel compartido
+    private val viewmodelPassenger: PassengerViewModel by activityViewModels() //viewModel compartido
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
@@ -66,7 +68,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private var currentLocationMarker: Marker? = null
     private var currentLocationCircle: Circle? = null
-    private var isMoveCameraUpdateLocation: Boolean = false
+    private var automaticallyMoveCamera: Boolean = false
 
 
     override fun onCreateView(
@@ -78,7 +80,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         popupPermission = PopupPermission(requireActivity())
-
 
         viewModelMap.radius.observe(viewLifecycleOwner){ value ->
             currentLocationCircle?.radius = value.toDouble()
@@ -98,6 +99,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         binding.buttonUbicacionMap.setOnClickListener {
             requestLocationPermission()
+            automaticallyMoveCamera = true
+        }
+
+        viewmodelPassenger.user.observe(viewLifecycleOwner){ usuario ->
+            if (usuario.foto_perfil != null){
+                Glide.with(requireContext())
+                    .load(usuario.foto_perfil)
+                    .into(binding.imagenPerfilPasajero)
+            }
         }
 
         val bottomSheet: View = binding.bottomSheetPassenger
@@ -126,8 +136,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         this.map.uiSettings.isTiltGesturesEnabled = false
 
         this.map.setOnCameraMoveStartedListener { reason ->
-            if (reason == GoogleMap.OnCameraMoveStartedListener.REASON_GESTURE)
+            if (reason == GoogleMap.OnCameraMoveStartedListener.REASON_GESTURE){
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                automaticallyMoveCamera = false
+            }
         }
 
         this.map.setOnCameraIdleListener {
@@ -227,9 +239,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             currentLocationMarker?.position = location
             currentLocationCircle?.center = location
         }
-
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
-
+        
+        if (automaticallyMoveCamera)
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }
 
     private fun getCustomMarker(option: Int): Bitmap {

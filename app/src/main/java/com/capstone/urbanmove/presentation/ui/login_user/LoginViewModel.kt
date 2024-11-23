@@ -26,7 +26,12 @@ class LoginViewModel: ViewModel() {
 
                 if (response != null) {
                     preferencesManager.setSession(response.access_token, response.refresh_token)
-                    result.postValue(Result.SUCCESS)
+
+                    when (response.role) {
+                        "PASAJERO" -> result.postValue(Result.PASSENGER)
+                        "CONDUCTOR" -> result.postValue(Result.DRIVER)
+                        else -> result.postValue(Result.NONE)
+                    }
                 } else {
                     result.postValue(Result.UNSUCCESS)
                 }
@@ -44,7 +49,12 @@ class LoginViewModel: ViewModel() {
 
                 if (response != null) {
                     preferencesManager.setSession(response.access_token, response.refresh_token)
-                    result.postValue(Result.SUCCESS)
+
+                    when (response.role) {
+                        "PASAJERO" -> result.postValue(Result.PASSENGER)
+                        "CONDUCTOR" -> result.postValue(Result.DRIVER)
+                        else -> result.postValue(Result.UNSUCCESS)
+                    }
                 } else {
                     result.postValue(Result.UNSUCCESS)
                 }

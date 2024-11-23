@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_driver_activity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_driver_activity"
+    app:startDestination="@id/loading_fragment">
+
+    <fragment
+        android:id="@+id/loading_fragment"
+        android:name="com.capstone.urbanmove.presentation.ui.common.LoadBlankFragment"
+        android:label="fragment_loading"
+        tools:layout="@layout/fragment_load_blank" />
+
+    <fragment
+        android:id="@+id/registerDriverF1Fragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.RegisterDriverF1Fragment"
+        android:label="fragment_register_driver_f1"
+        tools:layout="@layout/fragment_register_driver_f1" />
+
+    <fragment
+        android:id="@+id/registerDriverF2Fragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.RegisterDriverF2Fragment"
+        android:label="fragment_register_driver_f2"
+        tools:layout="@layout/fragment_register_driver_f2" />
+
+    <fragment
+        android:id="@+id/registerDriverF3Fragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.RegisterDriverF3Fragment"
+        android:label="fragment_register_driver_f3"
+        tools:layout="@layout/fragment_register_driver_f3" />
+
+    <fragment
+        android:id="@+id/mapDriverFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.conductor.mapview.MapDriverFragment"
+        android:label="fragment_map_driver"
+        tools:layout="@layout/fragment_map_driver" />
+
+    <action
+        android:id="@+id/action_to_tipo_conductor"
+        app:destination="@id/registerDriverF1Fragment" />
+
+    <action
+        android:id="@+id/action_to_informacion_personal"
+        app:destination="@id/registerDriverF2Fragment" />
+
+    <action
+        android:id="@+id/action_to_documentos_personales"
+        app:destination="@id/registerDriverF3Fragment" />
+
+    <action
+        android:id="@+id/action_to_map_driver"
+        app:destination="@id/mapDriverFragment" />
+
+
+    <fragment
+        android:id="@+id/registerDriverEmpresaFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.empresa.RegisterDriverEmpresaFragment"
+        android:label="fragment_register_driver_empresa"
+        tools:layout="@layout/fragment_register_driver_empresa" />
+    <fragment
+        android:id="@+id/registerDriverPrivadoFragment"
+        android:name="com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.RegisterDriverPrivadoFragment"
+        android:label="fragment_register_driver_privado"
+        tools:layout="@layout/fragment_register_driver_privado" />
+
+    <action
+        android:id="@+id/action_to_register_empresa"
+        app:destination="@id/registerDriverEmpresaFragment" />
+
+    <action
+        android:id="@+id/action_to_register_privado"
+        app:destination="@id/registerDriverPrivadoFragment" />
+
 
 </navigation>

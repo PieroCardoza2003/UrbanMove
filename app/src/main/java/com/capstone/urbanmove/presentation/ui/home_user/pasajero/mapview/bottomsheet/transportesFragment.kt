@@ -17,7 +17,6 @@ import com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.MapView
 class transportesFragment : Fragment() {
 
     private val viewModelPassenger: PassengerViewModel by activityViewModels() //viewModel compartido
-    private lateinit var name: String
 
     private var _binding: FragmentTransportesBinding? = null
     private val binding get() = _binding!!
@@ -43,9 +42,9 @@ class transportesFragment : Fragment() {
             findNavController().navigate(R.id.action_to_rutas)
         }
 
-        name = viewModelPassenger.getname()
-
-        binding.textviewMensajeBienvenida.text = "Hola $name, ¿Qué transporte deseas tomar?"
+        viewModelPassenger.user.observe(viewLifecycleOwner){
+            binding.textviewMensajeBienvenida.text = "Hola ${it.nombres}, ¿Qué transporte deseas tomar?"
+        }
 
         return binding.root
     }

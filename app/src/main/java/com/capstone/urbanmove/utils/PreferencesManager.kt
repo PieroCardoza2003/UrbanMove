@@ -1,6 +1,7 @@
 package com.capstone.urbanmove.utils
 
 import android.content.Context
+import android.util.Log
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.capstone.urbanmove.data.remote.models.LoginResponse
@@ -33,7 +34,7 @@ class PreferencesManager(context: Context) {
 
         if (accesstoken.isNullOrEmpty() || refreshtoken.isNullOrEmpty())
             return null
-        return LoginResponse(accesstoken, refreshtoken)
+        return LoginResponse(accesstoken, refreshtoken, "")
     }
 
     private fun removeKey(key: String) {

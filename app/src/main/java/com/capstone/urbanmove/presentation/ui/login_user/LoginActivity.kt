@@ -14,7 +14,7 @@ import com.capstone.urbanmove.domain.entity.Result
 import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
 import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
 import com.capstone.urbanmove.presentation.ui.forgot_password_user.ForgotPasswordActivity
-import com.capstone.urbanmove.presentation.ui.home_user.NavOptions
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.DriverActivity
 import com.capstone.urbanmove.presentation.ui.home_user.pasajero.PassengerActivity
 import com.capstone.urbanmove.presentation.ui.register_user.RegisterActivity
 import com.capstone.urbanmove.utils.VerifyEmail
@@ -60,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
             .build()
 
         binding.btnlogingoogle.setOnClickListener{
+            binding.btnlogingoogle.isEnabled = false
             CoroutineScope(Dispatchers.Main).launch {
                 signingGoogle()
             }
@@ -101,8 +102,13 @@ class LoginActivity : AppCompatActivity() {
         viewModel.result.observe(this){ result ->
             showLoadAnimation(false)
             when(result) {
-                Result.SUCCESS ->{
+                Result.PASSENGER ->{
                     val intent = Intent(this, PassengerActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                Result.DRIVER ->{
+                    val intent = Intent(this, DriverActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -129,9 +135,17 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private suspend fun signingGoogle() {
-        val result = oneTapClient?.beginSignIn(signInRequest)?.await()
-        val intentSenderRequest = IntentSenderRequest.Builder(result!!.pendingIntent).build()
-        activityResultLauncher.launch(intentSenderRequest)
+        try {
+            showLoadAnimation(true)
+            val result = oneTapClient?.beginSignIn(signInRequest)?.await()
+            val intentSenderRequest = IntentSenderRequest.Builder(result!!.pendingIntent).build()
+            activityResultLauncher.launch(intentSenderRequest)
+            showLoadAnimation(false)
+        } catch (e: Exception) {
+            showLoadAnimation(false)
+            binding.btnlogingoogle.isEnabled = true
+            Toast.makeText(this, "Ocurrió un error, verifica tu conexión a internet.", Toast.LENGTH_LONG).show()
+        }
     }
 
 
@@ -139,6 +153,7 @@ class LoginActivity : AppCompatActivity() {
         registerForActivityResult(
             ActivityResultContracts.StartIntentSenderForResult()
         ) { result ->
+            binding.btnlogingoogle.isEnabled = true
             if (result.resultCode == RESULT_OK) {
                 try {
                     val credential = oneTapClient!!.getSignInCredentialFromIntent(result.data)
@@ -149,12 +164,16 @@ class LoginActivity : AppCompatActivity() {
                             if (it.isSuccessful) {
                                 showLoadAnimation(true)
                                 viewModel.loginWithGoogle(idToken)
+                            } else {
+                                Toast.makeText(this, "No se ha podido autenticar su cuenta", Toast.LENGTH_LONG).show()
                             }
                         }
                     }
                 } catch (e: IOException) {
                     Toast.makeText(this, "Ocurrió un error durante la autenticación", Toast.LENGTH_LONG).show()
                 }
+            } else {
+                Toast.makeText(this, "No se ha podido autenticar su cuenta", Toast.LENGTH_LONG).show()
             }
         }
 }

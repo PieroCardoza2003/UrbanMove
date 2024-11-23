@@ -38,7 +38,7 @@ class MainViewModel: ViewModel() {
                     setIsLogged("NONE")
                 }
             } catch (io: IOException){
-                setIsLogged("NONE")
+                setIsLogged("ERROR")
             }
         }
     }

@@ -46,14 +46,17 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:clickable="true"
             android:focusable="true"
             android:elevation="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_profile"
+            app:shapeAppearance="@style/Circular"
             android:id="@+id/imagen_perfil_pasajero"
             android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/img_profile"/>
+            android:layout_height="60dp"/>
+
     </LinearLayout>
 
 

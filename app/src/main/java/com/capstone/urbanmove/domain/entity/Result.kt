@@ -4,5 +4,8 @@ enum class Result {
     SUCCESS,
     UNSUCCESS,
     INVALID,
-    ERROR
+    ERROR,
+    NONE,
+    PASSENGER,
+    DRIVER
 }

@@ -29,7 +29,6 @@ class RegisterDriverEmpresaFragment : Fragment() {
         _binding = FragmentRegisterDriverEmpresaBinding.inflate(inflater, container, false)
 
 
-
         binding.btnAceptar.setOnClickListener {
 
             val codigo_empleado = binding.edittextCodigo.text.toString()

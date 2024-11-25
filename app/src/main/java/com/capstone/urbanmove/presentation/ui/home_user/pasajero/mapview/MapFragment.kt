@@ -16,6 +16,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.FragmentMapBinding
@@ -45,6 +47,8 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.gms.maps.model.CircleOptions
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MapFragment : Fragment(), OnMapReadyCallback {
 
@@ -69,6 +73,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private var currentLocationMarker: Marker? = null
     private var currentLocationCircle: Circle? = null
     private var automaticallyMoveCamera: Boolean = false
+    private var socketConnected: Boolean = false
 
 
     override fun onCreateView(
@@ -80,6 +85,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         popupPermission = PopupPermission(requireActivity())
+
+        // Observar el estado de conexión
+        lifecycleScope.launch {
+            viewmodelPassenger.isConnected.collectLatest { isConnected ->
+                socketConnected = isConnected
+            }
+        }
+
 
         viewModelMap.radius.observe(viewLifecycleOwner){ value ->
             currentLocationCircle?.radius = value.toDouble()
@@ -170,7 +183,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             // Configura las solicitudes de ubicación (Aquí manejo los segundos por actualización, en este caso en un rango de 2 y 3 segundos)
             val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 2000)
-                .setWaitForAccurateLocation(false)
+                .setWaitForAccurateLocation(true)
                 .setMinUpdateIntervalMillis(2000)
                 .setMaxUpdateDelayMillis(3000)
                 .build()
@@ -181,18 +194,30 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     locationResult.locations.forEach { location ->
                         val currentLocation = LatLng(location.latitude, location.longitude)
                         //Log.d("prints", "actual: $currentLocation")
+
+                        viewmodelPassenger.connect()
                         updateMyLocationMarker(currentLocation)
+
+                        if (socketConnected) {
+                            viewmodelPassenger.send("""{ "latitude": ${location.latitude}, "longitude": ${location.longitude}, "type": "PASAJERO" }""")
+                        }
                     }
                 }
 
-                override fun onLocationAvailability(p0: LocationAvailability) {
+                /*override fun onLocationAvailability(p0: LocationAvailability) {
+                    Log.d("prints", "isLocationAvailable: ${p0.isLocationAvailable}")
                     if (!p0.isLocationAvailable) {
                         currentLocationMarker?.remove()
                         currentLocationCircle?.remove()
                         currentLocationMarker = null
                         currentLocationCircle = null
+
+                        if (socketConnected)
+                            viewmodelPassenger.disconnect()
                     }
                 }
+
+                 */
             }
 
             // Pide actualizaciones de la ubicación

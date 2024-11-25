@@ -2,6 +2,7 @@ package com.capstone.urbanmove.data.remote.user
 
 import com.capstone.urbanmove.data.remote.RetrofitHelper
 import com.capstone.urbanmove.data.remote.models.ConductorEmpresaRequest
+import com.capstone.urbanmove.data.remote.models.ConductorPrivadoRequest
 import com.capstone.urbanmove.data.remote.models.LoginGoogleRequest
 import com.capstone.urbanmove.data.remote.models.LoginResponse
 import com.capstone.urbanmove.data.remote.models.LoginUserRequest
@@ -83,4 +84,30 @@ class UserService {
         }
     }
 
+    suspend fun createConductorPrivado(
+        conductor: ConductorPrivadoRequest,
+        fotoperfil: MultipartBody.Part?,
+        licenciaFrontal: MultipartBody.Part,
+        licenciaReverso: MultipartBody.Part
+    ): Any? {
+        return withContext(Dispatchers.IO){
+            val response = retrofit.create(UserApiClient::class.java).createConductorPrivado(
+                id_usuario = conductor.id_usuario,
+                nombre = conductor.nombre,
+                apellido = conductor.apellido,
+                fecha_nacimiento = conductor.fecha_nacimiento,
+                foto_perfil = conductor.foto_perfil,
+                numero_licencia = conductor.numero_licencia,
+                fecha_vencimiento = conductor.fecha_vencimiento,
+                numero_placa = conductor.numero_placa,
+                marca_vehiculo = conductor.marca_vehiculo,
+                modelo_vehiculo = conductor.modelo_vehiculo,
+                color_vehiculo = conductor.color_vehiculo,
+                fotoperfil = fotoperfil,
+                licencia_frontal = licenciaFrontal,
+                licencia_reverso = licenciaReverso
+            )
+            response.body()
+        }
+    }
 }

@@ -8,5 +8,9 @@ object Constants {
     private const val BASE_URL_URBANMOVE_remote = "https://urbanmove-api.onrender.com"
     private const val BASE_URL_URBANMOVE = "http://192.168.1.45:3000"
 
+    private const val BASE_WS_URBANMOVE_remote = "wss://urbanmove-websocket.onrender.com"
+    private const val BASE_WS_URBANMOVE = "ws://192.168.1.45:4000"
+
     fun getBaseUrlUrbanmoveApi(): String = BASE_URL_URBANMOVE
+    fun getBaseWsUrbanmove(): String = BASE_WS_URBANMOVE
 }

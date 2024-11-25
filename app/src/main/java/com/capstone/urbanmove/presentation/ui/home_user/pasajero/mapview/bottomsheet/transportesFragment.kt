@@ -29,6 +29,7 @@ class transportesFragment : Fragment() {
 
         binding.btnTransporteMicrobus.setOnClickListener{
             //Toast.makeText(requireContext(), "microbus", Toast.LENGTH_SHORT).show()
+
             findNavController().navigate(R.id.action_to_rutas)
         }
 

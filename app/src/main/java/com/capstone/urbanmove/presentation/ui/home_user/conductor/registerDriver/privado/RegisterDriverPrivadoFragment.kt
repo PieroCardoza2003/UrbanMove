@@ -1,13 +1,18 @@
 package com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.capstone.urbanmove.databinding.FragmentRegisterDriverPrivadoBinding
+import com.capstone.urbanmove.domain.entity.Result
+import com.capstone.urbanmove.presentation.ui.common.ErrorActivity
+import com.capstone.urbanmove.presentation.ui.common.LoadDialogFragment
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.DriverActivity
 import com.capstone.urbanmove.presentation.ui.home_user.conductor.DriverViewModel
 import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.BottomSheetColor
 import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.BottomSheetMarca
@@ -18,6 +23,7 @@ class RegisterDriverPrivadoFragment : Fragment() {
     private val viewModel: DriverViewModel by activityViewModels() //viewModel compartido
     private var _binding: FragmentRegisterDriverPrivadoBinding? = null
     private val binding get() = _binding!!
+    private var loadDialogFragment: LoadDialogFragment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,26 +96,47 @@ class RegisterDriverPrivadoFragment : Fragment() {
                 return@setOnClickListener
             }
 
+            showLoadAnimation(true)
             viewModel.v_placa = numero_placa
+            viewModel.registrar_conductor_privado()
+        }
 
-            Log.d("Prints", "\nDatos personales:" +
-                    "\nNombres: ${viewModel.c_nombres}" +
-                    "\nApellidos: ${viewModel.c_apellidos}" +
-                    "\nfecha_nacimiento: ${viewModel.c_fecha_nacimiento}" +
-                    "\nfoto_perfil: ${viewModel.c_foto_perfil}" +
-                    "\n\nDatos conductor:" +
-                    "\nnumero_licencia: ${viewModel.c_numero_licencia}" +
-                    "\nfecha_vencimiento: ${viewModel.c_fecha_vencimiento}" +
-                    "\nfoto_frontal: ${viewModel.c_licencia_frontal}" +
-                    "\nfoto_reverso: ${viewModel.c_licencia_reverso}" +
-                    "\n\nDatos Vehiculo:" +
-                    "\nplaca: ${viewModel.v_placa}" +
-                    "\nmarca: ${viewModel.v_marca.value}" +
-                    "\nmodelo: ${viewModel.v_modelo.value}" +
-                    "\ncolor: ${viewModel.v_color.value}")
+        viewModel.result_conductor_privado.observe(viewLifecycleOwner){ result ->
+            showLoadAnimation(false)
+            when(result) {
+                Result.SUCCESS -> {
+                    Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_LONG).show()
+                    val intent = Intent(context, DriverActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+                Result.UNSUCCESS -> {
+                    Toast.makeText(requireContext(), "No se ha podido registrar, vuelva a intentarlo", Toast.LENGTH_LONG).show()
+                    val intent = Intent(context, DriverActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+                else -> {
+                    val intent = Intent(context, ErrorActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+            }
         }
 
         return binding.root
+    }
+
+    private fun showLoadAnimation(state: Boolean) {
+        if (state) {
+            if (loadDialogFragment == null) {
+                loadDialogFragment = LoadDialogFragment("Cargando")
+                loadDialogFragment?.show(childFragmentManager, "load_dialog")
+            }
+        } else {
+            loadDialogFragment?.dismiss()
+            loadDialogFragment = null
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 package com.capstone.urbanmove.data.repository
 
 import com.capstone.urbanmove.data.remote.models.ConductorEmpresaRequest
+import com.capstone.urbanmove.data.remote.models.ConductorPrivadoRequest
 import com.capstone.urbanmove.data.remote.models.LoginGoogleRequest
 import com.capstone.urbanmove.data.remote.models.LoginResponse
 import com.capstone.urbanmove.data.remote.models.LoginUserRequest
@@ -45,6 +46,20 @@ class UserRepository {
         licenciaReverso: MultipartBody.Part
     ): Any?{
         return api.createConductorEmpresa(
+            conductor = conductor,
+            fotoperfil = fotoperfil,
+            licenciaFrontal = licenciaFrontal,
+            licenciaReverso = licenciaReverso
+        )
+    }
+
+    suspend fun createConductorPrivado(
+        conductor: ConductorPrivadoRequest,
+        fotoperfil: MultipartBody.Part?,
+        licenciaFrontal: MultipartBody.Part,
+        licenciaReverso: MultipartBody.Part
+    ): Any?{
+        return api.createConductorPrivado(
             conductor = conductor,
             fotoperfil = fotoperfil,
             licenciaFrontal = licenciaFrontal,

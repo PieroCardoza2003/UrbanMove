@@ -51,4 +51,25 @@ interface UserApiClient {
         @Part licencia_frontal: MultipartBody.Part,
         @Part licencia_reverso: MultipartBody.Part
     ): Response<*>
+
+    @Multipart
+    @POST("/api/driver/register-private")
+    suspend fun createConductorPrivado(
+        @Query("id_usuario") id_usuario: String,
+        @Query("nombre") nombre: String,
+        @Query("apellido") apellido: String,
+        @Query("fecha_nacimiento") fecha_nacimiento: String,
+        @Query("foto_perfil") foto_perfil: String?,
+        @Query("numero_licencia") numero_licencia: String,
+        @Query("fecha_vencimiento") fecha_vencimiento: String,
+        @Query("numero_placa") numero_placa: String,
+        @Query("marca_vehiculo") marca_vehiculo: String,
+        @Query("modelo_vehiculo") modelo_vehiculo: String,
+        @Query("color_vehiculo") color_vehiculo: String,
+
+        @Part fotoperfil: MultipartBody.Part?,
+        @Part licencia_frontal: MultipartBody.Part,
+        @Part licencia_reverso: MultipartBody.Part
+    ): Response<*>
+
 }

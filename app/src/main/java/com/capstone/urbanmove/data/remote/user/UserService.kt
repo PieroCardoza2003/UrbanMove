@@ -10,6 +10,11 @@ import com.capstone.urbanmove.data.remote.models.NewPasswordRequest
 import com.capstone.urbanmove.data.remote.models.RegisterUserRequest
 import com.capstone.urbanmove.data.remote.models.VerifyAccountRequest
 import com.capstone.urbanmove.data.remote.models.VerifyCodeRequest
+import com.capstone.urbanmove.data.remote.user_auth.SessionApiClient
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleColor
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleMarca
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleModelo
+import com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.models.Ruta
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MultipartBody
@@ -56,6 +61,48 @@ class UserService {
         return withContext(Dispatchers.IO){
             val response = retrofit.create(UserApiClient::class.java).loginGoogle(request)
             response.body()
+        }
+    }
+
+    suspend fun getListaMarcas(): List<VehicleMarca> {
+        return withContext(Dispatchers.IO){
+            val response = retrofit.create(SessionApiClient::class.java).getListaMarcas()
+            response.body() ?: emptyList()
+        }
+    }
+
+    suspend fun getListaModelos(id: Int): List<VehicleModelo> {
+        return withContext(Dispatchers.IO){
+            val response = retrofit.create(SessionApiClient::class.java).getListaModelos(id)
+            response.body() ?: emptyList()
+        }
+    }
+
+    suspend fun getListaColores(): List<VehicleColor> {
+        return withContext(Dispatchers.IO){
+            val response = retrofit.create(SessionApiClient::class.java).getListaColores()
+            response.body() ?: emptyList()
+        }
+    }
+
+    suspend fun getRutasPasajero(): List<Ruta> {
+        return withContext(Dispatchers.IO){
+            val response = retrofit.create(SessionApiClient::class.java).getRutasPasajero()
+            response.body() ?: emptyList()
+        }
+    }
+
+    suspend fun getRutasConductorPrivado(): List<Ruta> {
+        return withContext(Dispatchers.IO){
+            val response = retrofit.create(SessionApiClient::class.java).getRutasConductorPrivado()
+            response.body() ?: emptyList()
+        }
+    }
+
+    suspend fun getRutasConductorEmpresa(id: String): List<Ruta> {
+        return withContext(Dispatchers.IO){
+            val response = retrofit.create(SessionApiClient::class.java).getRutasConductorEmpresa(id)
+            response.body() ?: emptyList()
         }
     }
 

@@ -10,6 +10,10 @@ import com.capstone.urbanmove.data.remote.user.UserService
 import com.capstone.urbanmove.data.remote.models.RegisterUserRequest
 import com.capstone.urbanmove.data.remote.models.VerifyAccountRequest
 import com.capstone.urbanmove.data.remote.models.VerifyCodeRequest
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleColor
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleMarca
+import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleModelo
+import com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.models.Ruta
 import okhttp3.MultipartBody
 
 class UserRepository {
@@ -37,6 +41,30 @@ class UserRepository {
 
     suspend fun loginGoogle(request: LoginGoogleRequest): LoginResponse?{
         return api.loginGoogle(request)
+    }
+
+    suspend fun getListaMarcas(): List<VehicleMarca> {
+        return api.getListaMarcas()
+    }
+
+    suspend fun getListaModelos(id: Int): List<VehicleModelo> {
+        return api.getListaModelos(id)
+    }
+
+    suspend fun getListaColores(): List<VehicleColor> {
+        return api.getListaColores()
+    }
+
+    suspend fun getRutasPasajero(): List<Ruta> {
+        return api.getRutasPasajero()
+    }
+
+    suspend fun getRutasConductorPrivado(): List<Ruta> {
+        return api.getRutasConductorPrivado()
+    }
+
+    suspend fun getRutasConductorEmpresa(id: String): List<Ruta> {
+        return api.getRutasConductorEmpresa(id)
     }
 
     suspend fun createConductorEmpresa(

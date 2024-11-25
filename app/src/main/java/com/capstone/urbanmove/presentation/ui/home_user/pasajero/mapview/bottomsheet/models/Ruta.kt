@@ -4,5 +4,6 @@ data class Ruta(
     var id_ruta: Int,
     var letra_ruta: String,
     var empresa: String,
+    var id_transporte: Int,
     var tipo_transporte: String
 )

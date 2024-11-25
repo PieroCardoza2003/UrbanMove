@@ -28,18 +28,17 @@ class transportesFragment : Fragment() {
         _binding = FragmentTransportesBinding.inflate(inflater, container, false)
 
         binding.btnTransporteMicrobus.setOnClickListener{
-            //Toast.makeText(requireContext(), "microbus", Toast.LENGTH_SHORT).show()
-
+            viewModelPassenger.selected_transporte = 0
             findNavController().navigate(R.id.action_to_rutas)
         }
 
         binding.btnTransporteColectivo.setOnClickListener{
-            //Toast.makeText(requireContext(), "colectivo", Toast.LENGTH_SHORT).show()
+            viewModelPassenger.selected_transporte = 1
             findNavController().navigate(R.id.action_to_rutas)
         }
 
         binding.btnTransporteCombi.setOnClickListener {
-            //Toast.makeText(requireContext(), "combi", Toast.LENGTH_SHORT).show()
+            viewModelPassenger.selected_transporte = 2
             findNavController().navigate(R.id.action_to_rutas)
         }
 

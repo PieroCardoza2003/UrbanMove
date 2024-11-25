@@ -123,6 +123,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
+        viewmodelPassenger.detectado.observe(viewLifecycleOwner){ detectado ->
+            usersLocationMarkers(detectado.location)
+        }
+
         val bottomSheet: View = binding.bottomSheetPassenger
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet).apply {
             isHideable = true
@@ -193,13 +197,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 override fun onLocationResult(locationResult: LocationResult) {
                     locationResult.locations.forEach { location ->
                         val currentLocation = LatLng(location.latitude, location.longitude)
-                        //Log.d("prints", "actual: $currentLocation")
 
-                        viewmodelPassenger.connect()
                         updateMyLocationMarker(currentLocation)
 
                         if (socketConnected) {
-                            viewmodelPassenger.send("""{ "latitude": ${location.latitude}, "longitude": ${location.longitude}, "type": "PASAJERO" }""")
+                            viewmodelPassenger.send(currentLocation)
                         }
                     }
                 }
@@ -267,6 +269,21 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         
         if (automaticallyMoveCamera)
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+    }
+
+    private var usercurrentLocationMarker: Marker? = null
+
+    private fun usersLocationMarkers(location: LatLng) {
+        if (usercurrentLocationMarker == null) {
+            val markerOptions = MarkerOptions()
+                .position(location)
+                .icon(BitmapDescriptorFactory.fromBitmap(getCustomMarker(1)))
+
+            usercurrentLocationMarker = map.addMarker(markerOptions)
+
+        } else {
+            usercurrentLocationMarker?.position = location
+        }
     }
 
     private fun getCustomMarker(option: Int): Bitmap {

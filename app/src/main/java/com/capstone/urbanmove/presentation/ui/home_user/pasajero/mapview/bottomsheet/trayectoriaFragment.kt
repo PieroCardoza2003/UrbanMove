@@ -5,14 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.FragmentTrayectoriaBinding
+import com.capstone.urbanmove.presentation.ui.home_user.pasajero.PassengerViewModel
 
 class trayectoriaFragment : Fragment() {
 
     private var _binding: FragmentTrayectoriaBinding? = null
     private val binding get() = _binding!!
+    private val viewModelPassenger: PassengerViewModel by activityViewModels() //viewModel compartido
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,22 +26,26 @@ class trayectoriaFragment : Fragment() {
 
 
         binding.buttomClose.setOnClickListener {
+            viewModelPassenger.cancelar_solicitud()
             findNavController().navigate(R.id.action_to_transporte)
         }
 
         binding.buttonIniciarBusqueda.setOnClickListener {
             findNavController().navigate(R.id.action_to_busqueda)
+            viewModelPassenger.connect()
         }
 
 
         binding.btnIda.setOnClickListener{
             binding.btnIda.setBackgroundResource(R.drawable.bg_btn_border_selected)
             binding.btnVuelta.setBackgroundResource(R.drawable.bg_btn_border_unselected)
+            viewModelPassenger.trayectoria = "Ida"
         }
 
         binding.btnVuelta.setOnClickListener{
             binding.btnVuelta.setBackgroundResource(R.drawable.bg_btn_border_selected)
             binding.btnIda.setBackgroundResource(R.drawable.bg_btn_border_unselected)
+            viewModelPassenger.trayectoria = "Vuelta"
         }
 
         binding.buttonAlcance.setOnClickListener {

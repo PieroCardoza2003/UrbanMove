@@ -6,9 +6,11 @@ import com.capstone.urbanmove.data.remote.models.VerifySessionResponse
 import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleColor
 import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleMarca
 import com.capstone.urbanmove.presentation.ui.home_user.conductor.registerDriver.privado.vehicle.objects.VehicleModelo
+import com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.models.Ruta
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface SessionApiClient {
 
@@ -29,4 +31,13 @@ interface SessionApiClient {
 
     @GET("/api/vehicle/colors")
     suspend fun getListaColores(): Response<List<VehicleColor>>
+
+    @GET("/api/company/all-route-passenger")
+    suspend fun getRutasPasajero(): Response<List<Ruta>>
+
+    @GET("/api/company/all-route-driver-privado")
+    suspend fun getRutasConductorPrivado(): Response<List<Ruta>>
+
+    @GET("/api/company/all-route")
+    suspend fun getRutasConductorEmpresa(@Query("empresaID") id: String): Response<List<Ruta>>
 }

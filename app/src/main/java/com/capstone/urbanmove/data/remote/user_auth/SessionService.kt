@@ -34,25 +34,4 @@ class SessionService {
             response.body()
         }
     }
-
-    suspend fun getListaMarcas(): List<VehicleMarca> {
-        return withContext(Dispatchers.IO){
-            val response = retrofit.create(SessionApiClient::class.java).getListaMarcas()
-            response.body() ?: emptyList()
-        }
-    }
-
-    suspend fun getListaModelos(id: Int): List<VehicleModelo> {
-        return withContext(Dispatchers.IO){
-            val response = retrofit.create(SessionApiClient::class.java).getListaModelos(id)
-            response.body() ?: emptyList()
-        }
-    }
-
-    suspend fun getListaColores(): List<VehicleColor> {
-        return withContext(Dispatchers.IO){
-            val response = retrofit.create(SessionApiClient::class.java).getListaColores()
-            response.body() ?: emptyList()
-        }
-    }
 }

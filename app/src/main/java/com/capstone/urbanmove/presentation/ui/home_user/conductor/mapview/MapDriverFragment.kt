@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.FragmentMapDriverBinding
@@ -50,6 +51,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MapDriverFragment : Fragment(), OnMapReadyCallback {
 
@@ -74,6 +77,8 @@ class MapDriverFragment : Fragment(), OnMapReadyCallback {
     private var currentLocationCircle: Circle? = null
     private var automaticallyMoveCamera: Boolean = false
 
+    private var socketConnected: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -94,6 +99,17 @@ class MapDriverFragment : Fragment(), OnMapReadyCallback {
         binding.buttonUbicacionMap.setOnClickListener {
             requestLocationPermission()
             automaticallyMoveCamera = true
+        }
+
+        viewModel.detectado.observe(viewLifecycleOwner){ detectado ->
+            usersLocationMarkers(detectado.location)
+        }
+
+        // Observar el estado de conexión
+        lifecycleScope.launch {
+            viewModel.isConnected.collectLatest { isConnected ->
+                socketConnected = isConnected
+            }
         }
 
         viewModel.driver_data.observe(viewLifecycleOwner){ usuario ->
@@ -163,7 +179,7 @@ class MapDriverFragment : Fragment(), OnMapReadyCallback {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             // Configura las solicitudes de ubicación (Aquí manejo los segundos por actualización, en este caso en un rango de 2 y 3 segundos)
             val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 2000)
-                .setWaitForAccurateLocation(false)
+                .setWaitForAccurateLocation(true)
                 .setMinUpdateIntervalMillis(2000)
                 .setMaxUpdateDelayMillis(3000)
                 .build()
@@ -175,10 +191,14 @@ class MapDriverFragment : Fragment(), OnMapReadyCallback {
                         val currentLocation = LatLng(location.latitude, location.longitude)
                         //Log.d("prints", "actual: $currentLocation")
                         updateMyLocationMarker(currentLocation)
+
+                        if (socketConnected) {
+                            viewModel.send(currentLocation)
+                        }
                     }
                 }
 
-                override fun onLocationAvailability(p0: LocationAvailability) {
+                /*override fun onLocationAvailability(p0: LocationAvailability) {
                     if (!p0.isLocationAvailable) {
                         currentLocationMarker?.remove()
                         currentLocationCircle?.remove()
@@ -186,6 +206,8 @@ class MapDriverFragment : Fragment(), OnMapReadyCallback {
                         currentLocationCircle = null
                     }
                 }
+
+                 */
             }
 
             // Pide actualizaciones de la ubicación
@@ -235,6 +257,21 @@ class MapDriverFragment : Fragment(), OnMapReadyCallback {
 
         if (automaticallyMoveCamera)
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+    }
+
+    private var usercurrentLocationMarker: Marker? = null
+
+    private fun usersLocationMarkers(location: LatLng) {
+        if (usercurrentLocationMarker == null) {
+            val markerOptions = MarkerOptions()
+                .position(location)
+                .icon(BitmapDescriptorFactory.fromBitmap(getCustomMarker(1)))
+
+            usercurrentLocationMarker = map.addMarker(markerOptions)
+
+        } else {
+            usercurrentLocationMarker?.position = location
+        }
     }
 
     private fun getCustomMarker(option: Int): Bitmap {

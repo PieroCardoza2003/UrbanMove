@@ -23,16 +23,4 @@ class UserAuthRepository {
     suspend fun verifyAccountDriver(): VerifyDriverAccountResponse? {
         return api.verifyAccountDriver()
     }
-
-    suspend fun getListaMarcas(): List<VehicleMarca> {
-        return api.getListaMarcas()
-    }
-
-    suspend fun getListaModelos(id: Int): List<VehicleModelo> {
-        return api.getListaModelos(id)
-    }
-
-    suspend fun getListaColores(): List<VehicleColor> {
-        return api.getListaColores()
-    }
 }

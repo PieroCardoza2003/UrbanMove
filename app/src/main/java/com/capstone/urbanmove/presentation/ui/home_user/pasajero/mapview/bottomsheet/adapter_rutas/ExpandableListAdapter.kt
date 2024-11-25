@@ -5,23 +5,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.capstone.urbanmove.R
 import com.capstone.urbanmove.databinding.ChildItemsBinding
 import com.capstone.urbanmove.databinding.GroupItemBinding
+import com.capstone.urbanmove.presentation.ui.home_user.pasajero.PassengerViewModel
+import com.capstone.urbanmove.presentation.ui.home_user.pasajero.mapview.bottomsheet.models.Ruta
 
 class ExpandableListAdapter(
     private val context: Context,
     private val titles: List<String>,
     private val icons: Map<String, Int>,
-    private val data: Map<String, List<String>>
+    private val data: Map<String, List<Ruta>>,
+    private val viewModelPassenger: PassengerViewModel
 ) : BaseExpandableListAdapter() {
 
     override fun getGroupCount(): Int = titles.size
-    override fun getChildrenCount(groupPosition: Int): Int = data[titles[groupPosition]]?.size ?: 0
+    override fun getChildrenCount(groupPosition: Int): Int {
+        val groupTitle = titles[groupPosition]
+        val total = data[groupTitle]?.size ?: 0
+        if (total == 0)
+            return 0
+        return 1
+    }
+
     override fun getGroup(groupPosition: Int): Any = titles[groupPosition]
-    override fun getChild(groupPosition: Int, childPosition: Int): Any =
-        data[titles[groupPosition]]?.get(childPosition) ?: ""
+    override fun getChild(groupPosition: Int, childPosition: Int): Any {
+        val groupTitle = titles[groupPosition]
+        return data[groupTitle]?.get(childPosition) ?: Ruta(0, "", "", 0,"") // Retornar un valor por defecto si no se encuentra
+    }
 
     override fun getGroupId(groupPosition: Int): Long = groupPosition.toLong()
     override fun getChildId(groupPosition: Int, childPosition: Int): Long =
@@ -40,12 +53,14 @@ class ExpandableListAdapter(
     }
     override fun getChildView(groupPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup?): View {
         val binding = ChildItemsBinding.inflate(LayoutInflater.from(context), parent, false)
-        val childItems = data[titles[groupPosition]] ?: emptyList()
+        val groupTitle = titles[groupPosition]
+        val childItems = data[groupTitle] ?: emptyList()
 
-        // Configurar el RecyclerView
         val recyclerView = binding.recyclerChildItems
-        recyclerView.layoutManager = GridLayoutManager(context, 3) // 3 columnas por fila
-        recyclerView.adapter = ChildGridAdapter(childItems)
+        recyclerView.layoutManager = GridLayoutManager(context, 3)
+        recyclerView.adapter = ChildGridAdapter(childItems) { selectedItem ->
+            viewModelPassenger.add_ruta_list(selectedItem)
+        }
 
         return binding.root
     }
